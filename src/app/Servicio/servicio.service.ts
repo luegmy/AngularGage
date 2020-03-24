@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
-import { from } from 'rxjs';
+import { HttpClient } from '@angular/common/http'
 import { Cliente } from '../Modelo/Cliente';
 
 @Injectable({
@@ -8,11 +7,26 @@ import { Cliente } from '../Modelo/Cliente';
 })
 export class ServicioService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  url="http://localhost:9090/vistas/incluido/cliente/";
+  urlLista = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/';
+  urlGuarda = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/guardar';
+  urlEdita = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/editar';
+  urlElimina = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/eliminar';
 
-  getClientes(){
-    return this.http.get<Cliente[]>(this.url);
+  getClientes() {
+    return this.http.get<Cliente[]>(this.urlLista);
+  }
+
+  createClientes(cliente: Cliente) {
+    return this.http.post<Cliente>(this.urlGuarda, cliente);
+  }
+
+  getClienteCodigo(codigo: number) {
+    return this.http.get<Cliente>(this.urlEdita + "/" + codigo);
+  }
+
+  deleteCliente(cliente: Cliente) {
+    return this.http.delete<Cliente>(this.urlElimina + "/" + cliente.codCliente);
   }
 }

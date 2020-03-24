@@ -10,11 +10,23 @@ import { Cliente } from 'src/app/Modelo/Cliente';
 export class ListarComponent implements OnInit {
 
   clientes : Cliente[];
-  constructor(private service:ServicioService,private router:Router) { }
+  constructor(private servicio:ServicioService,private router:Router) { }
 
   ngOnInit(): void {
-    this.service.getClientes()
+    this.servicio.getClientes()
     .subscribe(data=>{this.clientes=data;})
+  }
+
+  editar(cliente:Cliente):void{
+    localStorage.setItem("codigo",cliente.codCliente.toString());
+    this.router.navigate(["editar"]);
+  }
+
+  eliminar(cliente:Cliente){
+    this.servicio.deleteCliente(cliente)
+    .subscribe(data=>{this.clientes=this.clientes.filter(c=>c!==cliente);
+    alert("Usuario eliminado....")
+    })
   }
 
 }
