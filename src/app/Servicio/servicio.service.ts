@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Cliente } from '../Modelo/Cliente';
+import { Documento } from '../Modelo/Documento';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,14 @@ export class ServicioService {
 
   getClienteCodigo(codigo: number) {
     return this.http.get<Cliente>(this.urlEdita + "/" + codigo);
+  }
+
+  getDocumentos() {
+    return this.http.get<Documento[]>(this.urlLista + "documento")
+  }
+
+  getDocumentosCodigo(codigo: number) {
+    return this.http.get<Documento[]>(this.urlLista + "documento" + "/" + codigo)
   }
 
   deleteCliente(cliente: Cliente) {

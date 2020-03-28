@@ -10,6 +10,10 @@
                     <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control">
                     <label for="">Direccion</label>
                     <input [(ngModel)]="cliente.direccion" name="direccion" type="text" class="form-control">
+                    <label for="">Documento</label>
+                    <select name="documento" class="form-control">
+                        <option selected>{{cliente.documento}}</option>
+                    </select>
                     <label for="">Nro. Doc</label>
                     <input [(ngModel)]="cliente.nroDocumento" name="nroDocumento" type="text" class="form-control">
                     <label for="">Telefono</label>

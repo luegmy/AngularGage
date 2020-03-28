@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ServicioService} from "../../Servicio/servicio.service"
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/Modelo/Cliente';
+
 @Component({
   selector: 'app-listar',
   templateUrl: './listar.component.html',
@@ -14,11 +15,12 @@ export class ListarComponent implements OnInit {
 
   ngOnInit(): void {
     this.servicio.getClientes()
-    .subscribe(data=>{this.clientes=data;})
+    .subscribe((data:any[])=>{this.clientes=data;})
   }
 
   editar(cliente:Cliente):void{
     localStorage.setItem("codigo",cliente.codCliente.toString());
+    localStorage.setItem("doc",cliente.documento.toString());
     this.router.navigate(["editar"]);
   }
 

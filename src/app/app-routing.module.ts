@@ -5,14 +5,14 @@ import { AgregarComponent } from './Cliente/agregar/agregar.component';
 import { EditarComponent } from './Cliente/editar/editar.component';
 
 
-const routes: Routes = [
+const rutas: Routes = [
 {path:'listar',component:ListarComponent},
 {path:'agregar',component:AgregarComponent},
 {path:'editar',component:EditarComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(rutas)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

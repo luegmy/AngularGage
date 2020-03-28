@@ -4,21 +4,25 @@
             <h3>Agregar Clientes</h3>
         </div>
         <div class="card-body">
-<form action="">
-    <div class="form-group">
-        <label for="">Nombre</label>
-        <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control">
-        <label for="">Direccion</label>
-        <input [(ngModel)]="cliente.direccion" name="direccion" type="text" class="form-control">
-        <label for="">Nro. Doc</label>
-        <input [(ngModel)]="cliente.nroDocumento" name="nroDocumento" type="text" class="form-control">
-        <label for="">Telefono</label>
-        <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control">
-        <label for="">Correo</label>
-        <input [(ngModel)]="cliente.correo" name="correo" type="text" class="form-control">
-    </div>
-    <button (click)="guardar()" class="btn btn-danger">Guardar</button>
-</form>
+            <form action="">
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control">
+                    <label for="">Direccion</label>
+                    <input [(ngModel)]="cliente.direccion" name="direccion" type="text" class="form-control">
+                    <label for="">Documento</label>
+                    <select name="documento" [(ngModel)]="cliente.documento" class="form-control">
+                        <option *ngFor="let d of documentos" [ngValue]="d">{{d.descripcion}}</option>
+                    </select>
+                    <label for="">Nro. Doc</label>
+                    <input [(ngModel)]="cliente.nroDocumento" name="nroDocumento" type="text" class="form-control">
+                    <label for="">Telefono</label>
+                    <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control">
+                    <label for="">Correo</label>
+                    <input [(ngModel)]="cliente.correo" name="correo" type="text" class="form-control">
+                </div>
+                <button (click)="guardar()" class="btn btn-danger">Guardar</button>
+            </form>
         </div>
     </div>
 </div>
