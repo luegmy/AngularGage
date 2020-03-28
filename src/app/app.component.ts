@@ -3,20 +3,19 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl:'./app.component.html',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'gage-angular-app';
 
-  constructor(private router:Router){}
-  listar(){
+  constructor(private router: Router) { }
+  listar() {
     this.router.navigate(["listar"]);
   }
-  nuevo(){
+  nuevo() {
     this.router.navigate(["agregar"]);
   }
-  editar(){
+  editar() {
     this.router.navigate(["editar"]);
   }
 }

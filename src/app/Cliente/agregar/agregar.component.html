@@ -4,24 +4,49 @@
             <h3>Agregar Clientes</h3>
         </div>
         <div class="card-body">
-            <form action="">
+            <form [formGroup]="registroForm" (ngSubmit)="guardar()">
                 <div class="form-group">
                     <label for="">Nombre</label>
-                    <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control">
-                    <label for="">Direccion</label>
-                    <input [(ngModel)]="cliente.direccion" name="direccion" type="text" class="form-control">
+                    <input formControlName="nombre" type="text" class="form-control">
+                    <div class="alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <div class="container-error-message" *ngIf="nombre.errors.required">
+                            Ingrese un nombre
+                        </div>
+                    </div>
+                    <label for="">Dirección</label>
+                    <input formControlName="direccion" type="text" class="form-control">
+                    <div class="alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                        <div class="container-error-message" *ngIf="direccion.errors.required">
+                            Ingrese una dirección
+                        </div>
+                    </div>
                     <label for="">Documento</label>
-                    <select name="documento" [(ngModel)]="cliente.documento" class="form-control">
+                    <select formControlName="documento" class="form-control">
                         <option *ngFor="let d of documentos" [ngValue]="d">{{d.descripcion}}</option>
                     </select>
+                    <div class="alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
+                        <div class="container-error-message" *ngIf="documento.errors.required">
+                            Seleccione una opción
+                        </div>
+                    </div>
                     <label for="">Nro. Doc</label>
-                    <input [(ngModel)]="cliente.nroDocumento" name="nroDocumento" type="text" class="form-control">
+                    <input formControlName="nroDocumento" type="text" class="form-control">
+                    <div class="alert-danger" *ngIf="nroDocumento.invalid && (nroDocumento.dirty || nroDocumento.touched)">
+                        <div class="container-error-message" *ngIf="nroDocumento.errors.required">
+                            Ingrese un numero de documento
+                        </div>
+                    </div>
                     <label for="">Telefono</label>
-                    <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control">
+                    <input formControlName="telefono" type="text" class="form-control">
                     <label for="">Correo</label>
-                    <input [(ngModel)]="cliente.correo" name="correo" type="text" class="form-control">
+                    <input formControlName="correo" type="text" class="form-control">
+                    <div class="alert-danger" *ngIf="correo.hasError('email') && (correo.dirty || correo.touched)">
+                        <div class="container-error-message" *ngIf="correo.errors.email">
+                            Ingrese el patron de un email por ejemplo: abc@abc.com
+                        </div>
+                    </div>
                 </div>
-                <button (click)="guardar()" class="btn btn-danger">Guardar</button>
+                <button class="btn btn-danger" [disabled]="!registroForm.valid">Guardar</button>
             </form>
         </div>
     </div>
