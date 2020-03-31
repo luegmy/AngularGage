@@ -4,6 +4,12 @@
 			<h4>Clientes</h4>
 		</div>
 		<div class="card-body">
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control" name="filtrarClientes" placeholder="Busqueda....."
+						[(ngModel)]="filtrarClientes">
+				</div>
+			</div>
 			<table class="table">
 				<thead>
 					<tr>
@@ -19,7 +25,7 @@
 				</thead>
 
 				<tbody>
-					<tr *ngFor="let cliente of clientes">
+					<tr *ngFor="let cliente of clientes | filtro:filtrarClientes">
 						<td>{{cliente.nombre}}</td>
 						<td>{{cliente.direccion}}</td>
 						<td>{{cliente.documento.codDocumento}}</td>
