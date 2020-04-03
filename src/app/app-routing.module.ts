@@ -1,14 +1,20 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListarComponent } from './Cliente/listar/listar.component';
-import { AgregarComponent } from './Cliente/agregar/agregar.component';
-import { EditarComponent } from './Cliente/editar/editar.component';
+import { ListarClienteComponent } from './Cliente/listar/listarCliente.component';
+import { AgregarClienteComponent } from './Cliente/agregar/agregarCliente.component';
+import { EditarClienteComponent } from './Cliente/editar/editarCliente.component';
+import { ListarProductoComponent } from './Producto/listar/listarProducto.component';
+import { AgregarProductoComponent } from './Producto/agregar/agregarProducto.component';
+import { EditarProductoComponent } from './Producto/editar/editarProducto.component';
 
 
 const rutas: Routes = [
-{path:'listar',component:ListarComponent},
-{path:'agregar',component:AgregarComponent},
-{path:'editar',component:EditarComponent}
+{path:'listarCliente',component:ListarClienteComponent},
+{path:'agregarCliente',component:AgregarClienteComponent},
+{path:'editarCliente',component:EditarClienteComponent},
+{path:'listarProducto',component:ListarProductoComponent},
+{path:'agregarProducto',component:AgregarProductoComponent},
+{path:'edittarProducto',component:EditarProductoComponent},
 ];
 
 @NgModule({

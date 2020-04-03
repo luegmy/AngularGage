@@ -4,22 +4,30 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListarComponent } from './Cliente/listar/listar.component';
-import { AgregarComponent } from './Cliente/agregar/agregar.component';
-import { EditarComponent } from './Cliente/editar/editar.component';
+import { AgregarClienteComponent } from './Cliente/agregar/agregarCliente.component';
+import { EditarClienteComponent } from './Cliente/editar/editarCliente.component';
+import { ListarClienteComponent } from './Cliente/listar/listarCliente.component';
+import { ListarProductoComponent } from './Producto/listar/listarProducto.component';
+import { AgregarProductoComponent } from './Producto/agregar/agregarProducto.component';
+import { EditarProductoComponent } from './Producto/editar/editarProducto.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ServicioService } from '../app/Servicio/servicio.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FiltroPipe } from './filtro.pipe';
+import { ClienteService } from './Servicio/cliente.service';
+import { ProductoService } from './Servicio/producto.service';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListarComponent,
-    AgregarComponent,
-    EditarComponent,
+    ListarClienteComponent,
+    ListarProductoComponent,
+    AgregarClienteComponent,
+    AgregarProductoComponent,
+    EditarClienteComponent,
+    EditarProductoComponent,
     FiltroPipe
   ],
   imports: [
@@ -29,7 +37,9 @@ import { FiltroPipe } from './filtro.pipe';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ServicioService],
+  providers: [
+    ClienteService,
+    ProductoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

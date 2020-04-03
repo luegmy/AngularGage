@@ -1,0 +1,44 @@
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Agregar Productos</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="registroForm" (ngSubmit)="guardarProducto()">
+                <div class="form-group">
+                    <label for="">Descripcion</label>
+                    <input formControlName="descripcion" type="text" class="form-control">
+                    <div class="alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                        <div class="container-error-message" *ngIf="descripcion.errors.required">
+                            Ingrese un descripcion
+                        </div>
+                    </div>
+                    <label for="">Costo</label>
+                    <input formControlName="precioCompra" type="text" class="form-control">
+                    <div class="alert-danger" *ngIf="precioCompra.invalid && (precioCompra.dirty || precioCompra.touched)">
+                        <div class="container-error-message" *ngIf="precioCompra.errors.required">
+                            Ingrese el precio
+                        </div>
+                    </div>
+                    <label for="">Precio</label>
+                    <input formControlName="precioVenta" type="text" class="form-control">
+                    <div class="alert-danger" *ngIf="precioVenta.invalid && (precioVenta.dirty || precioVenta.touched)">
+                        <div class="container-error-message" *ngIf="precioVenta.errors.required">
+                            Ingrese un precio
+                        </div>
+                    </div>
+                    <label for="">Tipo</label>
+                    <select formControlName="tipo" class="form-control">
+                        <option *ngFor="let d of tipos" [ngValue]="d">{{d.descripcion}}</option>
+                    </select>
+                    <label for="">U.M</label>
+                    <select formControlName="medida" class="form-control">
+                        <option *ngFor="let m of medidas" [ngValue]="m">{{m.abreviatura}}</option>
+                    </select>
+                    
+                </div>
+                <button class="btn btn-danger" [disabled]="!registroForm.valid">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>

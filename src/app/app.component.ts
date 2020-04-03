@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { Documento } from './Modelo/cliente/Documento';
+import { ClienteService } from './Servicio/cliente.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +11,27 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) { }
-  listar() {
-    this.router.navigate(["listar"]);
+  constructor(private router: Router, private servicio: ClienteService) { }
+
+  ngOnInit(): void {
   }
-  nuevo() {
-    this.router.navigate(["agregar"]);
+
+  listarCliente() {
+    this.router.navigate(["listarCliente"]);
   }
-  editar() {
-    this.router.navigate(["editar"]);
+  nuevoCliente() {
+    this.router.navigate(["agregarCliente"]);
+  }
+  editarCliente() {
+    this.router.navigate(["editarCliente"]);
+  }
+  listarProducto() {
+    this.router.navigate(["listarProducto"]);
+  }
+  nuevoProducto() {
+    this.router.navigate(["agregarProducto"]);
+  }
+  editarProducto() {
+    this.router.navigate(["editarProducto"]);
   }
 }

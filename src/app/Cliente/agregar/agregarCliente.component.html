@@ -4,7 +4,7 @@
             <h3>Agregar Clientes</h3>
         </div>
         <div class="card-body">
-            <form [formGroup]="registroForm" (ngSubmit)="guardar()">
+            <form [formGroup]="registroForm" (ngSubmit)="guardarCliente()">
                 <div class="form-group">
                     <label for="">Nombre</label>
                     <input formControlName="nombre" type="text" class="form-control">

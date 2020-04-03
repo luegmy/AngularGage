@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ServicioService } from "../../Servicio/servicio.service"
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/Modelo/Cliente';
+import { Cliente } from 'src/app/Modelo/Cliente/Cliente';
+import { ClienteService } from 'src/app/Servicio/cliente.service';
 
 @Component({
-  selector: 'app-listar',
-  templateUrl: './listar.component.html',
-  styleUrls: ['./listar.component.css']
+  selector: 'app-listarCliente',
+  templateUrl: './listarCliente.component.html',
+  styleUrls: ['./listarCliente.component.css']
 })
-export class ListarComponent implements OnInit {
+export class ListarClienteComponent implements OnInit {
 
-  constructor(private servicio: ServicioService, private router: Router) { }
+  constructor(private servicio: ClienteService, private router: Router) { }
 
   filtrarClientes = "";
   clientes: Cliente[];
@@ -20,10 +20,10 @@ export class ListarComponent implements OnInit {
       .subscribe((data: any[]) => { this.clientes = data; })
   }
 
-  editar(cliente: Cliente): void {
+  editarCliente(cliente: Cliente): void {
     localStorage.setItem("codigo", cliente.codCliente.toString());
     localStorage.setItem("doc", cliente.documento.toString());
-    this.router.navigate(["editar"]);
+    this.router.navigate(["editarCliente"]);
   }
 
   eliminar(cliente: Cliente) {

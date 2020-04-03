@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Cliente } from '../Modelo/Cliente';
-import { Documento } from '../Modelo/Documento';
+import { Cliente } from 'src/app/Modelo/cliente/Cliente';
+import { Documento } from 'src/app/Modelo/cliente/Documento';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServicioService {
+export class ClienteService {
 
   constructor(private http: HttpClient) { }
 

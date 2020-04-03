@@ -11,7 +11,7 @@
                     <label for="">Direccion</label>
                     <input [(ngModel)]="cliente.direccion" name="direccion" type="text" class="form-control">
                     <label for="">Documento</label>
-                    <select name="documento" class="form-control">
+                    <select name="documento" class="form-control" [(ngModel)]="cliente.documento">
                         <option selected>{{cliente.documento}}</option>
                     </select>
                     <label for="">Nro. Doc</label>
