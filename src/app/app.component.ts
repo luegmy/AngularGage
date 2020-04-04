@@ -13,9 +13,6 @@ export class AppComponent {
 
   constructor(private router: Router, private servicio: ClienteService) { }
 
-  ngOnInit(): void {
-  }
-
   listarCliente() {
     this.router.navigate(["listarCliente"]);
   }
