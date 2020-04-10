@@ -1,17 +1,10 @@
-<div class="container">
-	<div class="card">
-		<div class="card-header">
-			<h4>Clientes</h4>
-		</div>
-		<div class="card-body">
-			<div class="row">
-				<div class="col">
-					<input type="text" class="form-control" name="filtrarClientes" placeholder="Busqueda....."
+
+		<mat-form-field>
+			<mat-label>Busqueda...</mat-label>
+			<input matInput name="filtrarClientes" placeholder="Busqueda....."
 						[(ngModel)]="filtrarClientes">
-				</div>
-			</div>
-			<table mat-table [dataSource]="clientes" class="mat-elevation-z8" style="width:
-			100%;">
+		  </mat-form-field>
+			<table mat-table [dataSource]="clientes | filtro:filtrarClientes" class="mat-elevation-z8">
 				<ng-container matColumnDef="nombre">
 					<th mat-header-cell *matHeaderCellDef>Nombre</th>
 					<td mat-cell *matCellDef="let cliente"> {{cliente.nombre}} </td>
@@ -53,12 +46,8 @@
 					</td>
 				</ng-container>
 
-				<tr mat-header-row *matHeaderRowDef="['nombre', 'direccion', 'documento', 'numero',
-				'telefono','correo','editar','eliminar']"></tr>
-				<tr mat-row *matRowDef="let fila; columns: ['nombre', 'direccion', 'documento', 'numero',
-			'telefono','correo','editar','eliminar'];"></tr>
+				<tr mat-header-row *matHeaderRowDef="columnasParaMostrar"></tr>
+				<tr mat-row *matRowDef="let fila; columns: columnasParaMostrar"></tr>
 			</table>
-
-		</div>
-	</div>
-</div>
+			<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+			</mat-paginator>

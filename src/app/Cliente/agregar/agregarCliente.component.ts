@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Documento } from 'src/app/Modelo/Cliente/Documento';
 import { ClienteService } from 'src/app/Servicio/cliente.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-agregarCliente',
@@ -11,42 +13,45 @@ import { ClienteService } from 'src/app/Servicio/cliente.service';
 })
 export class AgregarClienteComponent implements OnInit {
 
-  
+
   //cliente: Cliente = new Cliente;
   documentos: Documento[];
+  registroForm: FormGroup;
+  @ViewChild(MatTable) table: MatTable<any>;
 
-  registroForm: FormGroup
-  
-  constructor(private router: Router, private servicio: ClienteService, builder: FormBuilder) {
-    this.registroForm = builder.group({
-      nombre: ['', Validators.required],
-      direccion: ['', Validators.required],
-      documento: ['', Validators.required],
-      nroDocumento: ['', Validators.required],
-      telefono: [],
-      correo: ['',Validators.email]
+  constructor(
+    public dialogoRef: MatDialogRef<AgregarClienteComponent>,
+    private router: Router,
+    private servicio: ClienteService,
+    private builder: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+
+
+  ngOnInit() {
+    this.registroForm = this.builder.group({
+      nombre: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      documento: ['', [Validators.required]],
+      nroDocumento: ['', [Validators.required]],
+      telefono: [''],
+      correo: ['', [Validators.email]]
 
     })
-  }
-
-  get nombre(){return this.registroForm.get('nombre');}
-  get direccion(){return this.registroForm.get('direccion');}
-  get documento(){return this.registroForm.get('documento');}
-  get nroDocumento (){return this.registroForm.get('nroDocumento');}
-  get telefono(){return this.registroForm.get('telefono');}
-  get correo(){return this.registroForm.get('correo');}
-
-  ngOnInit(): void {
     this.servicio.getDocumentos()
-      .subscribe(data => this.documentos = data);
+      .subscribe((data: any[]) => this.documentos = data);
+
   }
+
+  get nombre() { return this.registroForm.get('nombre'); }
+  get direccion() { return this.registroForm.get('direccion'); }
+  get documento() { return this.registroForm.get('documento'); }
+  get nroDocumento() { return this.registroForm.get('nroDocumento'); }
+  get telefono() { return this.registroForm.get('telefono'); }
+  get correo() { return this.registroForm.get('correo'); }
 
   guardarCliente() {
-    this.servicio.createClientes(this.registroForm.value).subscribe(data => {
-      alert("Se agrrego con exito...!!");
-      this.router.navigate(["listarCliente"]);
-    })
+    this.servicio.createClientes(this.registroForm.value);
   }
-
 
 }

@@ -4,8 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-
 import { AppRoutingModule } from './app-routing.module';
+import {SidebarModule} from 'ng-sidebar';
+
 import { AppComponent } from './app.component';
 import { AgregarClienteComponent } from './Cliente/agregar/agregarCliente.component';
 import { EditarClienteComponent } from './Cliente/editar/editarCliente.component';
@@ -13,12 +14,15 @@ import { ListarClienteComponent } from './Cliente/listar/listarCliente.component
 import { ListarProductoComponent } from './Producto/listar/listarProducto.component';
 import { AgregarProductoComponent } from './Producto/agregar/agregarProducto.component';
 import { EditarProductoComponent } from './Producto/editar/editarProducto.component';
-import { ProductoService } from './Servicio/producto.service';
+import { DialogoConfirmacionComponent } from './Dialogo/dialogo-confirmacion.component';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { ContactComponent } from './contact/contact.component';
 
 import { FiltroPipe } from './filtro.pipe';
 
 import { ClienteService } from './Servicio/cliente.service';
-import { DialogoConfirmacionComponent } from './Dialogo/dialogo-confirmacion.component';
+import { ProductoService } from './Servicio/producto.service';
+import { ContactService } from './service/contact.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { DialogoConfirmacionComponent } from './Dialogo/dialogo-confirmacion.com
     EditarClienteComponent,
     EditarProductoComponent,
     FiltroPipe,
-    DialogoConfirmacionComponent
+    DialogoConfirmacionComponent,
+    ContactComponent,
+    ContactListComponent
     
   ],
   imports: [
@@ -40,11 +46,13 @@ import { DialogoConfirmacionComponent } from './Dialogo/dialogo-confirmacion.com
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    SidebarModule
   ],
   providers: [
     ClienteService,
-    ProductoService],
+    ProductoService,
+  ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

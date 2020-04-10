@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/Modelo/Cliente/Cliente';
 import { Documento } from 'src/app/Modelo/Cliente/Documento';
-import { log } from 'util';
 import { ClienteService } from 'src/app/Servicio/cliente.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-editarCliente',
@@ -27,7 +25,7 @@ export class EditarClienteComponent implements OnInit {
       .subscribe(data => { this.cliente = data; })
   }
 
-  actualizar() {
+  actualizarCliente() {
     this.servicio.createClientes(this.cliente).subscribe(data => {
       alert("Se actualizo con exito...!!");
       this.router.navigate(["listarCliente"]);

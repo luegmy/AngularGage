@@ -25,6 +25,8 @@
     "@ng-bootstrap/ng-bootstrap": "^6.0.1",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "bootstrap": "^4.0.0",
+    "materialize-css": "^1.0.0",
+    "ng-sidebar": "^9.2.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

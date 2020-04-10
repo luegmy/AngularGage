@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/Modelo/Cliente/Cliente';
 import { ClienteService } from 'src/app/Servicio/cliente.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmacion.component';
+import { EditarClienteComponent } from '../editar/editarCliente.component';
+import { AgregarClienteComponent } from '../agregar/agregarCliente.component';
 
 
 
@@ -14,16 +16,17 @@ import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmaci
 })
 export class ListarClienteComponent implements OnInit {
 
-  constructor(private dialogo: MatDialog, private servicio: ClienteService, private router: Router) { }
-
   filtrarClientes = "";
   clientes: Cliente[];
+  columnasParaMostrar = ['nombre', 'direccion','documento','numero','telefono','correo','editar','eliminar'];
 
-  ngOnInit(): void {
+  constructor(private dialogo: MatDialog, public servicio: ClienteService, private router: Router) { }
+
+  ngOnInit() {
     this.servicio.getClientes()
-      .subscribe((data: Cliente[]) => this.clientes = data);
+      .subscribe(data => this.clientes = data);
   }
-  
+
   editarCliente(cliente: Cliente): void {
     localStorage.setItem("codigo", cliente.codCliente.toString());
     localStorage.setItem("doc", cliente.documento.toString());
@@ -43,7 +46,8 @@ export class ListarClienteComponent implements OnInit {
 
           });
       });
+    }
 
-  }
+
 
 }

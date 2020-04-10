@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { Documento } from './Modelo/cliente/Documento';
 import { ClienteService } from './Servicio/cliente.service';
+import { AgregarClienteComponent } from './Cliente/agregar/agregarCliente.component';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +10,21 @@ import { ClienteService } from './Servicio/cliente.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  opened = false;
+  
+  constructor(private router: Router, private servicio: ClienteService) {
 
-  constructor(private router: Router, private servicio: ClienteService) { }
+  }
+
+  toggleSidebar() {
+    this.opened = !this.opened;
+  }
 
   listarCliente() {
     this.router.navigate(["listarCliente"]);
   }
   nuevoCliente() {
-    this.router.navigate(["agregarCliente"]);
+
   }
   editarCliente() {
     this.router.navigate(["editarCliente"]);
