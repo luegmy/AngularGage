@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/Modelo/Cliente/Cliente';
-import { Documento } from 'src/app/Modelo/Cliente/Documento';
-import { ClienteService } from 'src/app/Servicio/cliente.service';
+import { Cliente } from 'src/app/Cliente/Modelo/cliente/Cliente';
+import { Documento } from 'src/app/Cliente/Modelo/cliente/Documento';
+import { ClienteService } from 'src/app/Cliente/cliente.service';
 
 @Component({
   selector: 'app-editarCliente',

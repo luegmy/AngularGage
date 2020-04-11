@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Producto } from '../Modelo/producto/Producto';
-import { Medida } from '../Modelo/producto/Medida';
-import { Tipo } from '../Modelo/producto/Tipo';
+import { Producto } from '../Producto/Modelo/producto/Producto';
+import { Medida } from '../Producto/Modelo/producto/Medida';
+import { Tipo } from '../Producto/Modelo/producto/Tipo';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,10 @@ export class ProductoService {
     return this.http.get<Producto[]>(this.urlLista);
   }
 
+  getProductoCodigo(codigo: number) {
+    return this.http.get<Producto>(this.urlEdita + "/" + codigo);
+  }
+
   getUnidadMedidas() {
     return this.http.get<Medida[]>(this.urlLista + "medida")
   }
@@ -28,7 +32,7 @@ export class ProductoService {
     return this.http.get<Tipo[]>(this.urlLista + "tipo")
   }
 
-  createProductos(producto:Producto) {
-    return this.http.post<Producto>(this.urlGuarda , producto)
+  createProductos(producto: Producto) {
+    return this.http.post<Producto>(this.urlGuarda, producto)
   }
 }

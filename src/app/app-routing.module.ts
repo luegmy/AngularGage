@@ -6,6 +6,7 @@ import { EditarClienteComponent } from './Cliente/editar/editarCliente.component
 import { ListarProductoComponent } from './Producto/listar/listarProducto.component';
 import { AgregarProductoComponent } from './Producto/agregar/agregarProducto.component';
 import { EditarProductoComponent } from './Producto/editar/editarProducto.component';
+import { TableroComponent } from './Tablero/tablero.component';
 
 
 const rutas: Routes = [
@@ -14,7 +15,8 @@ const rutas: Routes = [
 {path:'editarCliente',component:EditarClienteComponent},
 {path:'listarProducto',component:ListarProductoComponent},
 {path:'agregarProducto',component:AgregarProductoComponent},
-{path:'edittarProducto',component:EditarProductoComponent},
+{path:'editarProducto',component:EditarProductoComponent},
+{path:'mostrarTablero',component:TableroComponent}
 ];
 
 @NgModule({

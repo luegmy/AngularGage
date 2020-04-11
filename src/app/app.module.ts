@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './Material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import {SidebarModule} from 'ng-sidebar';
 
@@ -15,14 +15,12 @@ import { ListarProductoComponent } from './Producto/listar/listarProducto.compon
 import { AgregarProductoComponent } from './Producto/agregar/agregarProducto.component';
 import { EditarProductoComponent } from './Producto/editar/editarProducto.component';
 import { DialogoConfirmacionComponent } from './Dialogo/dialogo-confirmacion.component';
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { ContactComponent } from './contact/contact.component';
+import { TableroComponent } from './Tablero/tablero.component';
 
-import { FiltroPipe } from './filtro.pipe';
+import { FiltroPipe } from './Filtro/filtro.pipe';
 
-import { ClienteService } from './Servicio/cliente.service';
-import { ProductoService } from './Servicio/producto.service';
-import { ContactService } from './service/contact.service';
+import { ClienteService } from './Cliente/cliente.service';
+import { ProductoService } from './Producto/producto.service';
 
 @NgModule({
   declarations: [
@@ -35,8 +33,7 @@ import { ContactService } from './service/contact.service';
     EditarProductoComponent,
     FiltroPipe,
     DialogoConfirmacionComponent,
-    ContactComponent,
-    ContactListComponent
+    TableroComponent
     
   ],
   imports: [
@@ -51,8 +48,7 @@ import { ContactService } from './service/contact.service';
   ],
   providers: [
     ClienteService,
-    ProductoService,
-  ContactService],
+    ProductoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

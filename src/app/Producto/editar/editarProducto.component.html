@@ -1,1 +1,29 @@
-<p>editar works!</p>
+
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3 class="card-title">Actualizar Producto</h3>
+        </div>
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="">Descripcion</label>
+                    <input [(ngModel)]="producto.descripcion" name="descripcion" type="text" class="form-control">
+                    <label for="">Costo</label>
+                    <input [(ngModel)]="producto.precioCompra" name="precioCompra" type="text" class="form-control">
+                    <label for="">Venta</label>
+                    <input [(ngModel)]="producto.precioVenta" name="precioVenta" type="text" class="form-control">
+                    <label for="">U.M</label>
+                    <select name="medida" class="form-control">
+                        <option selected>{{producto.medida}}</option>
+                    </select>
+                    <label for="">Tipo</label>
+                    <select name="tipo" class="form-control">
+                        <option selected>{{producto.tipo}}</option>
+                    </select>
+                </div>
+                <button (click)="actualizarProducto()" class="btn btn-danger">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>

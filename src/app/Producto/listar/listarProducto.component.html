@@ -1,33 +1,41 @@
-<div class="container-fluid">
-	<div class="card">
-		<div class="card-header">
-			<h4>Productos</h4>
-		</div>
-		<div class="card-body">
+<div class="container">
+	<div class="card text-center border-light shadow-sm">
 		
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Descripcion</th>
-						<th>Precio</th>
-						<th>Venta</th>
-						<th>U.M</th>
-						<th>Tipo</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
+			<h5 class="card-title">Lista de Productos</h5>
+		
+		<div class="card-body">
+			<div class="d-flex">
+				<a routerLink="/agregarProducto" class="btn btn-success btn-sm col-2 col-md-1" title="Nuevo producto"><i
+						class="medium material-icons text-white">open_in_new</i> </a>
+				<input class="form-control col-8 offset-2 offset-md-3" type="text" placeholder="Busqueda ...">
+			</div>
+			<div class="table-responsive">
+				<table class="table table-hover table-sm table-borderless">
+					<thead>
+						<tr class="shadow-sm">
+							<th>Descripcion</th>
+							<th>Precio</th>
+							<th>Venta</th>
+							<th>U.M</th>
+							<th>Tipo</th>
+							<th colspan="2" class="text-center">Acciones</th>
+						</tr>
+					</thead>
 
-				<tbody>
-					<tr *ngFor="let producto of productos">
-						<td>{{producto.descripcion}}</td>
-						<td>{{producto.precioCompra}}</td>
-						<td>{{producto.precioVenta}}</td>
-						<td>{{producto.medida.descripcion}}</td>
-						<td>{{producto.tipo.descripcion}}</td>
-						
-				</tbody>
-			</table>
+					<tbody>
+						<tr *ngFor="let producto of productos" class="shadow-sm">
+							<td class="text-left">{{producto.descripcion}}</td>
+							<td>{{producto.precioCompra}}</td>
+							<td>{{producto.precioVenta}}</td>
+							<td>{{producto.medida.descripcion}}</td>
+							<td>{{producto.tipo.descripcion}}</td>
+							<td class="text-center"><a (click)="editarProducto(producto)" class="btn btn-info btn-sm" title="Editar producto">
+									<i class="small material-icons text-white">edit</i></a>
+							<a class="btn btn-danger btn-sm" title="Eliminar producto">
+									<i class="small material-icons text-white">delete</i></a></td>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

@@ -31,6 +31,10 @@
   max-width: 35px;
 }
 
+.gage{
+  max-width: 100px;
+}
+
 table tbody tr{
 background-color: #ffffff;
 }
@@ -85,6 +89,7 @@ border: 0;
 }
 
 #sidebar-container .menu{
+  background-color: #404e67;
   width: 18rem;
 }
 

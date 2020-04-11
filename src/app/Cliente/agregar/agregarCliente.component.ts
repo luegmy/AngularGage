@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Documento } from 'src/app/Modelo/Cliente/Documento';
-import { ClienteService } from 'src/app/Servicio/cliente.service';
+import { Documento } from 'src/app/Cliente/Modelo/cliente/Documento';
+import { ClienteService } from 'src/app/Cliente/cliente.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 

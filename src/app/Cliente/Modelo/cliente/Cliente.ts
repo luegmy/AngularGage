@@ -1,5 +1,5 @@
-export class Contact {
-    ID:number;
+export class Cliente{
+  codCliente:number;
   nombre:String;
   direccion:String;
   documento:number;

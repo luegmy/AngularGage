@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/Modelo/Cliente/Cliente';
-import { ClienteService } from 'src/app/Servicio/cliente.service';
-import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { Cliente } from 'src/app/Cliente/Modelo/cliente/Cliente';
+import { ClienteService } from 'src/app/Cliente/cliente.service';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmacion.component';
-import { EditarClienteComponent } from '../editar/editarCliente.component';
-import { AgregarClienteComponent } from '../agregar/agregarCliente.component';
-
-
 
 @Component({
   selector: 'app-listarCliente',
@@ -18,7 +14,7 @@ export class ListarClienteComponent implements OnInit {
 
   filtrarClientes = "";
   clientes: Cliente[];
-  columnasParaMostrar = ['nombre', 'direccion','documento','numero','telefono','correo','editar','eliminar'];
+  columnasParaMostrar = ['nombre', 'direccion', 'documento', 'numero', 'telefono', 'correo', 'editar', 'eliminar'];
 
   constructor(private dialogo: MatDialog, public servicio: ClienteService, private router: Router) { }
 
@@ -46,7 +42,7 @@ export class ListarClienteComponent implements OnInit {
 
           });
       });
-    }
+  }
 
 
 

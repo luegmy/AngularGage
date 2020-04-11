@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProductoService } from 'src/app/Servicio/producto.service';
-import { Medida } from 'src/app/Modelo/producto/Medida';
-import { Tipo } from 'src/app/Modelo/producto/Tipo';
 import { Router } from '@angular/router';
+import { ProductoService } from 'src/app/Producto/producto.service';
+import { Medida } from 'src/app/Producto/Modelo/producto/Medida';
+import { Tipo } from 'src/app/Producto/Modelo/producto/Tipo';
+
 
 @Component({
   selector: 'app-agregar',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Producto } from 'src/app/Producto/Modelo/producto/Producto';
+import { ProductoService } from 'src/app/Producto/producto.service';
 import { Router } from '@angular/router';
-import { Producto } from 'src/app/Modelo/producto/Producto';
-import { ProductoService } from 'src/app/Servicio/producto.service';
 
 @Component({
   selector: 'app-listarProducto',
@@ -11,11 +11,15 @@ import { ProductoService } from 'src/app/Servicio/producto.service';
 })
 export class ListarProductoComponent implements OnInit {
 
-  productos:Producto[];
-  constructor(private servicio:ProductoService) { }
+  productos: Producto[];
+  constructor(private servicio: ProductoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.servicio.getProductos().subscribe(dato=>this.productos=dato);
+    this.servicio.getProductos().subscribe(dato => this.productos = dato);
   }
 
+  editarProducto(producto: Producto): void {
+    localStorage.setItem("codigo", producto.codProducto.toString());
+    this.router.navigate(["editarProducto"]);
+  }
 }
