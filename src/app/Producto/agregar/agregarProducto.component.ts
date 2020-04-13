@@ -15,8 +15,8 @@ export class AgregarProductoComponent implements OnInit {
 
   medidas:Medida[];
   tipos:Tipo[];
-
   registroForm:FormGroup
+
   constructor(private router:Router, private servicio:ProductoService,builder:FormBuilder) { 
     this.registroForm=builder.group({
       descripcion:['',Validators.required],
@@ -26,12 +26,6 @@ export class AgregarProductoComponent implements OnInit {
       medida:['',Validators.required]
     })
   }
-
-  get descripcion(){return this.registroForm.get('descripcion');}
-  get precioCompra(){return this.registroForm.get('precioCompra');}
-  get precioVenta(){return this.registroForm.get('precioVenta');}
-  get tipo(){return this.registroForm.get('tipo');}
-  get medida(){return this.registroForm.get('medida');}
   
   ngOnInit(): void {
     this.servicio.getTipoProductos().subscribe(dato=>this.tipos=dato);
@@ -40,9 +34,15 @@ export class AgregarProductoComponent implements OnInit {
 
   guardarProducto(){
     this.servicio.createProductos(this.registroForm.value).subscribe(dato=>{
-      alert("Se agrrego con exito...!!");
+      alert("Se agrego con exito...!!");
       this.router.navigate(["listarProducto"]);
     })
   }
+  
+  get descripcion(){return this.registroForm.get('descripcion');}
+  get precioCompra(){return this.registroForm.get('precioCompra');}
+  get precioVenta(){return this.registroForm.get('precioVenta');}
+  get tipo(){return this.registroForm.get('tipo');}
+  get medida(){return this.registroForm.get('medida');}
 
 }

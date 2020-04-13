@@ -1,16 +1,15 @@
 <div class="container">
 	<div class="card text-center border-light shadow-sm">
-		
-			<h5 class="card-title">Lista de Productos</h5>
-		
+		<h5 class="car-title text-left pl-4 pt-2">LISTA DE PRODUCTOS</h5>
 		<div class="card-body">
 			<div class="d-flex">
 				<a routerLink="/agregarProducto" class="btn btn-success btn-sm col-2 col-md-1" title="Nuevo producto"><i
 						class="medium material-icons text-white">open_in_new</i> </a>
-				<input class="form-control col-8 offset-2 offset-md-3" type="text" placeholder="Busqueda ...">
+				<input class="form-control col-8 offset-2 offset-md-3" type="text" placeholder="Busqueda ..."
+				[(ngModel)]="filtrarProductos" name="filtrarProductos">
 			</div>
 			<div class="table-responsive">
-				<table class="table table-hover table-sm table-borderless">
+				<table class="table table-hover table-sm table-bordered">
 					<thead>
 						<tr class="shadow-sm">
 							<th>Descripcion</th>
@@ -23,17 +22,19 @@
 					</thead>
 
 					<tbody>
-						<tr *ngFor="let producto of productos" class="shadow-sm">
+						<tr *ngFor="let producto of productos | filtroProducto:filtrarProductos" class="shadow-sm">
 							<td class="text-left">{{producto.descripcion}}</td>
 							<td>{{producto.precioCompra}}</td>
 							<td>{{producto.precioVenta}}</td>
 							<td>{{producto.medida.descripcion}}</td>
 							<td>{{producto.tipo.descripcion}}</td>
-							<td class="text-center"><a (click)="editarProducto(producto)" class="btn btn-info btn-sm" title="Editar producto">
+							<td class="text-center"><a (click)="editarProducto(producto)" class="btn btn-info btn-sm"
+									title="Editar producto">
 									<i class="small material-icons text-white">edit</i></a>
-							<a class="btn btn-danger btn-sm" title="Eliminar producto">
+								<a class="btn btn-danger btn-sm" title="Eliminar producto">
 									<i class="small material-icons text-white">delete</i></a></td>
 					</tbody>
+					
 				</table>
 			</div>
 		</div>

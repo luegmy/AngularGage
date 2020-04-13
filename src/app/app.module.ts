@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Material/material.module';
 import { AppRoutingModule } from './app-routing.module';
-import {SidebarModule} from 'ng-sidebar';
+import { SidebarModule } from 'ng-sidebar';
 
 import { AppComponent } from './app.component';
 import { AgregarClienteComponent } from './Cliente/agregar/agregarCliente.component';
@@ -17,7 +17,8 @@ import { EditarProductoComponent } from './Producto/editar/editarProducto.compon
 import { DialogoConfirmacionComponent } from './Dialogo/dialogo-confirmacion.component';
 import { TableroComponent } from './Tablero/tablero.component';
 
-import { FiltroPipe } from './Filtro/filtro.pipe';
+import { FiltroClientePipe } from './Filtro/filtroCliente.pipe';
+import { FiltroProductoPipe } from './Filtro/filtroProducto.pipe';
 
 import { ClienteService } from './Cliente/cliente.service';
 import { ProductoService } from './Producto/producto.service';
@@ -31,10 +32,11 @@ import { ProductoService } from './Producto/producto.service';
     AgregarProductoComponent,
     EditarClienteComponent,
     EditarProductoComponent,
-    FiltroPipe,
     DialogoConfirmacionComponent,
-    TableroComponent
-    
+    TableroComponent,
+    FiltroClientePipe,
+    FiltroProductoPipe
+
   ],
   imports: [
     BrowserModule,

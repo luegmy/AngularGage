@@ -14,8 +14,7 @@ export class ListarClienteComponent implements OnInit {
 
   filtrarClientes = "";
   clientes: Cliente[];
-  columnasParaMostrar = ['nombre', 'direccion', 'documento', 'numero', 'telefono', 'correo', 'editar', 'eliminar'];
-
+  //columnasParaMostrar = ['nombre', 'direccion', 'documento', 'numero', 'telefono', 'correo', 'editar', 'eliminar'];
   constructor(private dialogo: MatDialog, public servicio: ClienteService, private router: Router) { }
 
   ngOnInit() {
@@ -25,7 +24,6 @@ export class ListarClienteComponent implements OnInit {
 
   editarCliente(cliente: Cliente): void {
     localStorage.setItem("codigo", cliente.codCliente.toString());
-    localStorage.setItem("doc", cliente.documento.toString());
     this.router.navigate(["editarCliente"]);
   }
 

@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 })
 export class ListarProductoComponent implements OnInit {
 
+  filtrarProductos="";
   productos: Producto[];
   constructor(private servicio: ProductoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.servicio.getProductos().subscribe(dato => this.productos = dato);
+    this.servicio.getProductos()
+    .subscribe(dato => this.productos = dato);
   }
 
   editarProducto(producto: Producto): void {

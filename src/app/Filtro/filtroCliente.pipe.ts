@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filtro'
+  name: 'filtroCliente'
 })
-export class FiltroPipe implements PipeTransform {
+export class FiltroClientePipe implements PipeTransform {
 
   transform(items: any[], texto: any): any[] {
     if (!texto || texto.length < 3) return items;
