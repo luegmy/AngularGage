@@ -70,7 +70,7 @@ border: 0;
 }
 
 .bg-light-blue{
-  background-color:#F5F6FA;
+  background-color:#F5F6FA !important;
 }
 
 .bg-light{
@@ -79,8 +79,10 @@ border: 0;
 
 #sidebar-container{
   min-height: 100vh;
-  margin-left: -18rem;
-  transition: margin ,25s ease-in-out;
+  background-color: #404E67 !important;
+  /* margin-left: -15rem;
+  transition: margin ,25s ease-in-out; */
+
 }
 
 #sidebar-container .logo{
@@ -89,8 +91,22 @@ border: 0;
 }
 
 #sidebar-container .menu{
-  background-color: #404e67;
-  width: 18rem;
+  /* background-color: #404E67; */
+  width: 15rem;
+}
+
+#sidebar-container .menu a{
+  background-color: #404E67 !important;
+  color: #DCDCDC;
+}
+
+#sidebar-container .list-group-flush :hover{
+  background-color: rgba(0, 123, 255, .10) !important;
+  color: #00A5A8;
+}
+
+#sidebar-container i{
+  margin-left: 1rem;
 }
 
 #content-wrapper.toggled #sidebar-container{

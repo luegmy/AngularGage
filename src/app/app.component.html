@@ -1,23 +1,23 @@
 <div id="content-wrapper" class="d-flex">
   
-  <div id="sidebar-container" class="bg-dark border-right" *ngIf="opened">
-    <div class="logo">
+  <div id="sidebar-container" class="border-right" *ngIf="opened">
+    <div class="logo text-center">
       <h4 class="font-weight-bold mb-0"><img src="assets/GAGE2.png" class="img-fluid gage rounded-circle"></h4>
     </div>
     <div class="menu list-group-flush">
-      <a routerLink="/mostrarTablero" class="list-group-item list-group-item-action bg-light p-2 border-0"><i
-          class="small material-icons lead mr-2">dashboard</i>Tablero</a>
-      <a routerLink="/listarCliente" class="list-group-item list-group-item-action bg-light p-2 border-0"><i
-          class="small material-icons lead mr-2">face</i>Cliente</a>
-      <a routerLink="/listarProducto"class="list-group-item list-group-item-action bg-light p-2 border-0"><i
-          class="small material-icons  lead mr-2">view_comfy</i>Producto</a>
+      <a routerLink="/mostrarTablero" class="list-group-item list-group-item-action p-2 border-0"><i
+          class="medium material-icons lead mr-2">dashboard</i>Tablero</a>
+      <a routerLink="/listarCliente" class="list-group-item list-group-item-action p-2 border-0"><i
+          class="medium material-icons lead mr-2">face</i>Cliente</a>
+      <a routerLink="/listarProducto" class="list-group-item list-group-item-action p-2 border-0"><i
+          class="medium material-icons  lead mr-2">view_comfy</i>Producto</a>
     </div>
   </div>
 
   <div class="w-100 bg-light-blue">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div class="container">
-        <button class="btn btn-primary text-primary" (click)="toggleSidebar()">Abrir / cerrar menu</button>
+        <button class="btn btn-primary text-primary" (click)="toggleSidebar()">&#9776;</button>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

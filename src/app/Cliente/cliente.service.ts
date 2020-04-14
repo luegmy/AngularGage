@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Cliente } from './Modelo/cliente/Cliente';
 import { Documento } from './Modelo/cliente/Documento';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -11,13 +12,14 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  urlLista = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/';
+  urlLista = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/pagina?';
   urlGuarda = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/guardar';
   urlEdita = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/editar';
   urlElimina = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/eliminar';
 
-  getClientes() {
-    return this.http.get<Cliente[]>(this.urlLista);
+  getClientes(page: number, size: number, order: string, asc: boolean): Observable<any> {
+    /* return this.http.get<Cliente[]>(this.urlLista); */
+    return this.http.get<Cliente[]>(this.urlLista + "page=" + page + "&size=" + size + "&order=" + order + "&asc=" + asc);
   }
 
   createClientes(cliente: Cliente) {
