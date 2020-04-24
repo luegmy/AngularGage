@@ -12,14 +12,21 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  urlLista = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/pagina?';
-  urlGuarda = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/guardar';
-  urlEdita = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/editar';
-  urlElimina = 'http://localhost:9090/SpringGage/vistas/incluido/cliente/eliminar';
+  urlLista = 'http://localhost:9090/SpringGage/vistas/rest/cliente/';
+  urlPagina = 'http://localhost:9090/SpringGage/vistas/rest/cliente/pagina?';
+  urlGuarda = 'http://localhost:9090/SpringGage/vistas/rest/cliente/guardar';
+  urlEdita = 'http://localhost:9090/SpringGage/vistas/rest/cliente/editar';
+  urlElimina = 'http://localhost:9090/SpringGage/vistas/rest/cliente/eliminar';
 
-  getClientes(page: number, size: number, order: string, asc: boolean): Observable<any> {
+  urlListaDoc = 'http://localhost:9090/SpringGage/vistas/rest/cliente/';
+
+  getClientesPaginacion(page: number, size: number, order: string, asc: boolean): Observable<any> {
     /* return this.http.get<Cliente[]>(this.urlLista); */
-    return this.http.get<Cliente[]>(this.urlLista + "page=" + page + "&size=" + size + "&order=" + order + "&asc=" + asc);
+    return this.http.get<Cliente[]>(this.urlPagina + "page=" + page + "&size=" + size + "&order=" + order + "&asc=" + asc);
+  }
+
+  getClientes(){
+return this.http.get<Cliente[]>(this.urlLista);
   }
 
   createClientes(cliente: Cliente) {
@@ -31,11 +38,11 @@ export class ClienteService {
   }
 
   getDocumentos() {
-    return this.http.get<Documento[]>(this.urlLista + "documento")
+    return this.http.get<Documento[]>(this.urlListaDoc + "documento")
   }
 
-  getDocumentosCodigo(codigo: number) {
-    return this.http.get<Documento[]>(this.urlLista + "documento" + "/" + codigo)
+  getDocumentosCodigo(codigo: number) : Observable<any>{
+    return this.http.get<Documento[]>(this.urlListaDoc + "documento" + "/" + codigo)
   }
 
   deleteCliente(cliente: Cliente) {

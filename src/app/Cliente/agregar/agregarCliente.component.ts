@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Documento } from 'src/app/Cliente/Modelo/cliente/Documento';
 import { ClienteService } from 'src/app/Cliente/cliente.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-agregarCliente',
@@ -16,10 +14,8 @@ export class AgregarClienteComponent implements OnInit {
   documentos: Documento[];
   registroForm: FormGroup;
 
-  constructor(
-    private router: Router,
-    private servicio: ClienteService,
-    private builder: FormBuilder) { 
+  constructor(private router: Router,private servicio: ClienteService,private builder: FormBuilder) { 
+    
       this.registroForm = this.builder.group({
         nombre: ['', [Validators.required]],
         direccion: ['', [Validators.required]],

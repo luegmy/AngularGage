@@ -11,10 +11,10 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  urlLista = 'http://localhost:9090/SpringGage/vistas/incluido/producto/';
-  urlGuarda = 'http://localhost:9090/SpringGage/vistas/incluido/producto/guardar';
-  urlEdita = 'http://localhost:9090/SpringGage/vistas/incluido/producto/editar';
-  urlElimina = 'http://localhost:9090/SpringGage/vistas/incluido/producto/eliminar';
+  urlLista = 'http://localhost:9090/SpringGage/vistas/rest/producto/';
+  urlGuarda = 'http://localhost:9090/SpringGage/vistas/rest/producto/guardar';
+  urlEdita = 'http://localhost:9090/SpringGage/vistas/rest/producto/editar';
+  urlElimina = 'http://localhost:9090/SpringGage/vistas/rest/producto/eliminar';
 
   getProductos() {
     return this.http.get<Producto[]>(this.urlLista);

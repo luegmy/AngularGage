@@ -16,12 +16,18 @@ import { AgregarProductoComponent } from './Producto/agregar/agregarProducto.com
 import { EditarProductoComponent } from './Producto/editar/editarProducto.component';
 import { DialogoConfirmacionComponent } from './Dialogo/dialogo-confirmacion.component';
 import { TableroComponent } from './Tablero/tablero.component';
+import { ListarVentaComponent } from './Venta/listar-venta/listar-venta.component';
+import { AgregarVentaComponent } from './Venta/agregar-venta/agregar-venta.component';
+import { EditarVentaComponent } from './Venta/editar-venta/editar-venta.component';
 
 import { FiltroClientePipe } from './Filtro/filtroCliente.pipe';
 import { FiltroProductoPipe } from './Filtro/filtroProducto.pipe';
+import { FiltroVentaPipe } from './Filtro/filtroVenta.pipe';
 
 import { ClienteService } from './Cliente/cliente.service';
 import { ProductoService } from './Producto/producto.service';
+import { DetalleVentaComponent } from './Venta/detalle-venta/detalle-venta.component';
+import { VentaService } from './Venta/venta.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,12 @@ import { ProductoService } from './Producto/producto.service';
     DialogoConfirmacionComponent,
     TableroComponent,
     FiltroClientePipe,
-    FiltroProductoPipe
+    FiltroProductoPipe,
+    FiltroVentaPipe,
+    ListarVentaComponent,
+    AgregarVentaComponent,
+    EditarVentaComponent,
+    DetalleVentaComponent
 
   ],
   imports: [
@@ -50,7 +61,8 @@ import { ProductoService } from './Producto/producto.service';
   ],
   providers: [
     ClienteService,
-    ProductoService],
+    ProductoService,
+    VentaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

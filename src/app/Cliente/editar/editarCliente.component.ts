@@ -16,14 +16,18 @@ export class EditarClienteComponent implements OnInit {
   constructor(private router: Router, private servicio: ClienteService) { }
 
   ngOnInit(): void {
+    this.servicio.getDocumentos()
+      .subscribe((data: any[]) => this.documentos = data);
     this.editarCliente();
+
   }
 
   editarCliente() {
     let codigo = localStorage.getItem("codigo");
     this.servicio.getClienteCodigo(+codigo)
-      .subscribe(data => { this.cliente = data; })
+      .subscribe(data => this.cliente = data);
   }
+
 
   actualizarCliente() {
     this.servicio.createClientes(this.cliente).subscribe(data => {

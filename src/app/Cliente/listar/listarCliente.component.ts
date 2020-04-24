@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/Cliente/Modelo/cliente/Cliente';
 import { ClienteService } from 'src/app/Cliente/cliente.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmacion.component';
+import { Documento } from '../Modelo/cliente/Documento';
 
 @Component({
   selector: 'app-listarCliente',
@@ -16,8 +17,9 @@ export class ListarClienteComponent implements OnInit {
   clientes: Cliente[];
   totalPages: number[];
 
+
   page = 0;
-  size = 1;
+  size = 10;
   order = 'codCliente';
   asc = true;
 
@@ -33,7 +35,7 @@ export class ListarClienteComponent implements OnInit {
   }
 
   cargarClientes() {
-    this.servicio.getClientes(this.page, this.size, this.order, this.asc).subscribe(
+    this.servicio.getClientesPaginacion(this.page, this.size, this.order, this.asc).subscribe(
       data => {
         this.clientes = data.content;
         this.isFirst = data.first;
@@ -48,6 +50,7 @@ export class ListarClienteComponent implements OnInit {
 
   editarCliente(cliente: Cliente): void {
     localStorage.setItem("codigo", cliente.codCliente.toString());
+    localStorage.setItem("doc", cliente.documento.codDocumento.toString());
     this.router.navigate(["editarCliente"]);
   }
 

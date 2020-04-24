@@ -1,0 +1,12 @@
+table tbody tr{
+    background-color: #ffffff;
+    }
+    
+table{
+    border-collapse: separate;
+    border-spacing: 0 .1rem;
+}
+
+.shadow-sm{
+box-shadow: 0 0 1.25rem rgba(11, 37, 75, .05);
+}

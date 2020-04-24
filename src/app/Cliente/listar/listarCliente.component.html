@@ -18,7 +18,8 @@
 							<th (click)="setOrder('nroDocumento')">RUC/DNI</th>
 							<th (click)="setOrder('telefono')">Telefono</th>
 							<th>Correo</th>
-							<th><i class="medium material-icons" (click)="sort()" style="cursor: pointer;">thumbs_up_down</i></th>
+							<th><i class="medium material-icons" (click)="sort()"
+									style="cursor: pointer;">thumbs_up_down</i></th>
 							<th colspan="2" class="text-center">Acciones</th>
 						</tr>
 					</thead>
@@ -38,14 +39,16 @@
 									<i class="small material-icons text-white">delete</i></a></td>
 						</tr>
 						<tr>
-							<td><a (click)="rewind()" style="cursor: pointer;"><span aria-hidden="true">&laquo;</span></a>
+							<td><a (click)="rewind()" style="cursor: pointer;"><span
+										aria-hidden="true">&laquo;</span></a>
 							<td colspan="5">
 								<span *ngFor="let p of totalPages; let i = index">
 									<a style="cursor: pointer;" (click)="setPage(i)"
 										[ngClass]="{'text-primary':i===page}" class="pr-2">{{i+1}}</a>
 								</span>
 							</td>
-							<td><a (click)="forward()" style="cursor: pointer;" ><span aria-hidden="true">&raquo;</span></a>
+							<td><a (click)="forward()" style="cursor: pointer;"><span
+										aria-hidden="true">&raquo;</span></a>
 						</tr>
 					</tbody>
 				</table>

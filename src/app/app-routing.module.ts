@@ -7,7 +7,9 @@ import { ListarProductoComponent } from './Producto/listar/listarProducto.compon
 import { AgregarProductoComponent } from './Producto/agregar/agregarProducto.component';
 import { EditarProductoComponent } from './Producto/editar/editarProducto.component';
 import { TableroComponent } from './Tablero/tablero.component';
-
+import { ListarVentaComponent } from './Venta/listar-venta/listar-venta.component';
+import { AgregarVentaComponent } from './Venta/agregar-venta/agregar-venta.component';
+import { EditarVentaComponent } from './Venta/editar-venta/editar-venta.component';
 
 const rutas: Routes = [
 {path:'listarCliente',component:ListarClienteComponent},
@@ -16,7 +18,10 @@ const rutas: Routes = [
 {path:'listarProducto',component:ListarProductoComponent},
 {path:'agregarProducto',component:AgregarProductoComponent},
 {path:'editarProducto',component:EditarProductoComponent},
-{path:'mostrarTablero',component:TableroComponent}
+{path:'mostrarTablero',component:TableroComponent},
+{path:'listarVenta',component:ListarVentaComponent},
+{path:'agregarVenta',component:AgregarVentaComponent},
+{path:'editarVenta',component:EditarVentaComponent},
 ];
 
 @NgModule({
