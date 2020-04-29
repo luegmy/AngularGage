@@ -1,37 +1,59 @@
+<div class="form-row">
+	<div class="form-group col-md-3">
+		<label for="">Producto</label>
+		<select [(ngModel)]="detalle.producto" class="form-control" name="producto" [compareWith]="compararProductos">
+			<option *ngFor="let p of productos" [ngValue]="p">{{p.descripcion}}</option>
+		</select>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="">Precio</label>
+		<input [(ngModel)]="detalle.precio" type="text" class="form-control" name="precio">
+	</div>
+	<div class="form-group col-md-3">
+		<label for="">Cantidad</label>
+		<input [(ngModel)]="detalle.cantidad" type="text" class="form-control" name="cantidad">
+	</div>
+	<div class="form-group col-md-3 d-flex">
+		<button class="btn btn-success mt-4" (click)="agregarDetalle2()">Agregar</button>
+	</div>
+</div>
 
-	<div class="card text-center border-light shadow-sm">
-		<h5 class="car-title text-left pl-4 pt-2">DETALLE DE VENTA</h5>
-		<div class="card-body">
+<div class="card text-center border-light shadow-sm">
+	<h5 class="car-title text-left pl-4 pt-2">DETALLE DE VENTA</h5>
+	<div class="card-body">
 
-			<div class="table-responsive">
-				<table class="table table-hover table-sm table-bordered">
-					<thead>
-						<tr class="shadow-sm">
-							<th>CODIGO</th>
-							<th>PRODUCTO</th>
-							<th>PRECIO</th>
-							<th>CANTIDAD</th>
-							<th>SUBTOTAL</th>
-							<th colspan="2" class="text-center">ACCIONES</th>
-						</tr>
-					</thead>
+		<div class="table-responsive">
+			<table class="table table-hover table-sm table-bordered">
+				<thead>
+					<tr class="shadow-sm">
+						<th>ITEM</th>
+						<th>CODIGO</th>
+						<th>PRODUCTO</th>
+						<th>PRECIO</th>
+						<th>CANTIDAD</th>
+						<th>SUBTOTAL</th>
+						<th colspan="2" class="text-center">ACCIONES</th>
+					</tr>
+				</thead>
 
-					<tbody>
-						<tr *ngFor="let detalle of detallesH" class="shadow-sm">
-							<td>{{detalle.producto.codProducto}}</td>
-							<td>{{detalle.producto.descripcion}}</td>
-							<td>{{detalle.precio}}</td>
-							<td>{{detalle.cantidad}}</td>
-							<td>{{detalle.cantidad * detalle.precio}}</td>
-							<td class="text-center"><a class="btn btn-info btn-sm"
+				<tbody>
+					<tr *ngFor="let detalle of detallesH;let indice=index" [attr.data-index]="indice" class="shadow-sm">
+						<td>{{indice+1}}</td>
+						<td>{{detalle.producto.codProducto}}</td>
+						<td>{{detalle.producto.descripcion}}</td>
+						<td>{{detalle.precio}}</td>
+						<td>{{detalle.cantidad}}</td>
+						<td>{{detalle.cantidad * detalle.precio}}</td>
+						<td class="text-center"><a class="btn btn-info btn-sm"
+								(click)="editarDetalle(detalle.id.codProducto,detalle.id.numComprobante,indice)"
 								title="Editar detalle">
 								<i class="small material-icons text-white">edit</i></a>
-							<a class="btn btn-danger btn-sm" title="Eliminar detalle">
+							<a class="btn btn-danger btn-sm" (click)="eliminar(indice)" title="Eliminar detalle">
 								<i class="small material-icons text-white">delete</i></a></td>
-						</tr>
-					</tbody>
-					
-				</table>
-			</div>
+					</tr>
+				</tbody>
+
+			</table>
 		</div>
 	</div>
+</div>

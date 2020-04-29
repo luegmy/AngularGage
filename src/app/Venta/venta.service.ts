@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Venta } from './modelo/Venta';
 import { DetalleVenta } from './modelo/DetalleVenta';
-import { Comrpobante } from './modelo/Comprobante';
+import { Comprobante } from './modelo/Comprobante';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,27 +11,33 @@ import { Comrpobante } from './modelo/Comprobante';
 export class VentaService {
 
   constructor(private http: HttpClient) { }
-  urlLista = 'http://localhost:9090/SpringGage/vistas/venta/';
-  urlGuarda = 'http://localhost:9090/SpringGage/vistas/venta/guardar';
-  urlEdita = 'http://localhost:9090/SpringGage/vistas/venta/editar';
+  url = 'http://localhost:9090/SpringGage/vistas/venta/';
 
   getVentas() {
-    return this.http.get<Venta[]>(this.urlLista);
+    return this.http.get<Venta[]>(this.url);
   }
 
   createVenta(venta: Venta) {
-    return this.http.post<Venta>(this.urlGuarda, venta);
+    return this.http.post<Venta>(this.url + "guardar", venta);
+  }
+
+  getVentaNumero(numero: number) :Observable<any> {
+    return this.http.get<Venta>(this.url + "editar/" + numero)
   }
 
   getDetalleVenta(numero: number) {
-    return this.http.get<DetalleVenta[]>(this.urlLista + numero)
+    return this.http.get<DetalleVenta[]>(this.url + numero)
+  }
+
+  getDetalleVentaId(codigo: number, numero: number) {
+    return this.http.get<DetalleVenta>(this.url + "editar/detalle/" + codigo + "/" + numero)
   }
 
   createDetalleVenta(detalle: DetalleVenta[]) {
-    return this.http.post<DetalleVenta[]>(this.urlGuarda + "/detalle", detalle);
+    return this.http.post<DetalleVenta[]>(this.url + "guardar/detalle", detalle);
   }
 
   getComprobantes() {
-    return this.http.get<Comrpobante[]>(this.urlLista + "/comprobante")
+    return this.http.get<Comprobante[]>(this.url + "comprobante")
   }
 }

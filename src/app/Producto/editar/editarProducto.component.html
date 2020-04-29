@@ -1,9 +1,13 @@
 <div class="container col-md-6">
     <div class="card">
-        <h3 class="card-title text-left pl-4 pt-2">ACTUALIZAR PRODUCTO</h3>
+        <h5 class="card-title text-left pl-4 pt-2">ACTUALIZAR PRODUCTO</h5>
         <div class="card-body">
             <form action="">
                 <div class="form-group">
+                    <label for="">Tipo</label>
+                    <select [(ngModel)]="producto.tipo" name="tipo" class="form-control" [compareWith]="compararTipos">
+                        <option *ngFor="let t of tipos" [ngValue]="t">{{t.descripcion}}</option>
+                    </select>
                     <label for="">Descripcion</label>
                     <input [(ngModel)]="producto.descripcion" name="descripcion" type="text" class="form-control">
                     <label for="">Costo</label>
@@ -11,13 +15,10 @@
                     <label for="">Venta</label>
                     <input [(ngModel)]="producto.precioVenta" name="precioVenta" type="text" class="form-control">
                     <label for="">U.M</label>
-                    <select name="medida" class="form-control">
-                        <option selected>{{producto.medida}}</option>
+                    <select [(ngModel)]="producto.medida" name="medida" class="form-control" [compareWith]="compararMedidas">
+                        <option *ngFor="let m of medidas" [ngValue]="m">{{m.abreviatura}}</option>
                     </select>
-                    <label for="">Tipo</label>
-                    <select name="tipo" class="form-control">
-                        <option selected>{{producto.tipo}}</option>
-                    </select>
+                    
                 </div>
                 <button (click)="actualizarProducto()" class="btn btn-danger">Guardar</button>
             </form>

@@ -12,40 +12,34 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  urlLista = 'http://localhost:9090/SpringGage/vistas/rest/cliente/';
-  urlPagina = 'http://localhost:9090/SpringGage/vistas/rest/cliente/pagina?';
-  urlGuarda = 'http://localhost:9090/SpringGage/vistas/rest/cliente/guardar';
-  urlEdita = 'http://localhost:9090/SpringGage/vistas/rest/cliente/editar';
-  urlElimina = 'http://localhost:9090/SpringGage/vistas/rest/cliente/eliminar';
-
-  urlListaDoc = 'http://localhost:9090/SpringGage/vistas/rest/cliente/';
+  url = 'http://localhost:9090/SpringGage/vistas/rest/cliente/';
 
   getClientesPaginacion(page: number, size: number, order: string, asc: boolean): Observable<any> {
     /* return this.http.get<Cliente[]>(this.urlLista); */
-    return this.http.get<Cliente[]>(this.urlPagina + "page=" + page + "&size=" + size + "&order=" + order + "&asc=" + asc);
+    return this.http.get<Cliente[]>(this.url +"pagina?"+"page=" + page + "&size=" + size + "&order=" + order + "&asc=" + asc);
   }
 
-  getClientes(){
-return this.http.get<Cliente[]>(this.urlLista);
+  getClientes() {
+    return this.http.get<Cliente[]>(this.url);
   }
 
   createClientes(cliente: Cliente) {
-    return this.http.post<Cliente>(this.urlGuarda, cliente);
+    return this.http.post<Cliente>(this.url+"guardar", cliente);
   }
 
   getClienteCodigo(codigo: number) {
-    return this.http.get<Cliente>(this.urlEdita + "/" + codigo);
+    return this.http.get<Cliente>(this.url + "editar/" + codigo);
   }
 
   getDocumentos() {
-    return this.http.get<Documento[]>(this.urlListaDoc + "documento")
+    return this.http.get<Documento[]>(this.url + "documento")
   }
 
-  getDocumentosCodigo(codigo: number) : Observable<any>{
-    return this.http.get<Documento[]>(this.urlListaDoc + "documento" + "/" + codigo)
+  getDocumentosCodigo(codigo: number): Observable<any> {
+    return this.http.get<Documento[]>(this.url + "documento" + "/" + codigo)
   }
 
   deleteCliente(cliente: Cliente) {
-    return this.http.delete<Cliente>(this.urlElimina + "/" + cliente.codCliente);
+    return this.http.delete<Cliente>(this.url + "eliminar/" + cliente.codCliente);
   }
 }

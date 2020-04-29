@@ -13,22 +13,36 @@ import { Tipo } from '../Modelo/producto/Tipo';
 })
 export class EditarProductoComponent implements OnInit {
 
-  medidas:Medida[];
-  tipos:Tipo[];
-  producto:Producto= new Producto();
+  
+  producto: Producto = new Producto();
+  medidas: Medida[];
+  tipos: Tipo[];
 
-  constructor(private router:Router, private servicio:ProductoService) { }
-    
+  constructor(private router: Router, private servicio: ProductoService) { }
+
   ngOnInit(): void {
+    this.servicio.getTipoProductos().subscribe(dato => this.tipos = dato);
+    this.servicio.getUnidadMedidas().subscribe(dato => this.medidas = dato);
     this.editarProducto();
-    this.servicio.getTipoProductos().subscribe(dato=>this.tipos=dato);
-    this.servicio.getUnidadMedidas().subscribe(dato=>this.medidas=dato);
   }
 
-  editarProducto(){
-    let codigo=localStorage.getItem("codigo");
-    this.servicio.getProductoCodigo(+codigo)
-    .subscribe(data=>this.producto=data);
+  editarProducto() {
+    let codigo = localStorage.getItem("codigo");
+    this.servicio.getProductoCodigo(+codigo).subscribe(data => this.producto = data);
+  }
+
+   //funcion para poner por defecto un valor en el select
+   compararTipos( doc1:Tipo, doc2:Tipo) {
+    if (doc1==null || doc2==null) {
+      return false;
+    }
+    return doc1.descripcion===doc2.descripcion;
+  }
+  compararMedidas( doc1:Medida, doc2:Medida) {
+    if (doc1==null || doc2==null) {
+      return false;
+    }
+    return doc1.abreviatura===doc2.abreviatura;
   }
 
   actualizarProducto() {

@@ -4,7 +4,6 @@ import { Cliente } from 'src/app/Cliente/Modelo/cliente/Cliente';
 import { ClienteService } from 'src/app/Cliente/cliente.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmacion.component';
-import { Documento } from '../Modelo/cliente/Documento';
 
 @Component({
   selector: 'app-listarCliente',

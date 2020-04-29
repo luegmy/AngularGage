@@ -7,7 +7,7 @@ import { Cliente } from 'src/app/Cliente/Modelo/cliente/Cliente';
 import { ClienteService } from 'src/app/Cliente/cliente.service';
 import { ProductoService } from 'src/app/Producto/producto.service';
 import { Producto } from 'src/app/Producto/Modelo/producto/Producto';
-import { Comrpobante } from '../modelo/Comprobante';
+import { Comprobante } from '../modelo/Comprobante';
 import { Venta } from '../modelo/Venta';
 
 @Component({
@@ -31,7 +31,7 @@ export class AgregarVentaComponent implements OnInit {
  
   clientes: Cliente[]
   productos: Producto[]
-  comprobantes: Comrpobante[]
+  comprobantes: Comprobante[]
   registroForm
 
 

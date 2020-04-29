@@ -1,6 +1,6 @@
 import { Cliente } from 'src/app/Cliente/Modelo/cliente/Cliente';
-import { Comrpobante } from './Comprobante';
 import { Usuario } from 'src/app/Usuario/modelo/Usuario';
+import { Comprobante } from '../modelo/Comprobante';
 import { DetalleVenta } from './DetalleVenta';
 
 export class Venta{
@@ -11,7 +11,7 @@ export class Venta{
     monto:number;
     cliente:Cliente;
     usuario:Usuario;
-    comprobante:Comrpobante;
+    comprobante:Comprobante;
     observacion:string;
     numNota:number;
     detalle:DetalleVenta[];

@@ -10,6 +10,7 @@ import { TableroComponent } from './Tablero/tablero.component';
 import { ListarVentaComponent } from './Venta/listar-venta/listar-venta.component';
 import { AgregarVentaComponent } from './Venta/agregar-venta/agregar-venta.component';
 import { EditarVentaComponent } from './Venta/editar-venta/editar-venta.component';
+import { AppComponent2 } from './Material/app.component';
 
 const rutas: Routes = [
 {path:'listarCliente',component:ListarClienteComponent},
@@ -22,6 +23,7 @@ const rutas: Routes = [
 {path:'listarVenta',component:ListarVentaComponent},
 {path:'agregarVenta',component:AgregarVentaComponent},
 {path:'editarVenta',component:EditarVentaComponent},
+{path:'app',component:AppComponent2},
 ];
 
 @NgModule({

@@ -1,1 +1,60 @@
-<p>editar-venta works!</p>
+<div class="container">
+    <router-outlet></router-outlet>
+    <div class="card border-light shadow-sm">
+        <h5 class="card-title text-left pl-4 pt-2">GENERAR VENTA</h5>
+        <div class="card-body">
+            <form action="">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="">Comprobante</label>
+                        <select [(ngModel)]="venta.comprobante" class="form-control" name="comprobante" [compareWith]=compararComprobantes>
+                            <option *ngFor="let c of comprobantes" [ngValue]="c">{{c.descripcion}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Serie</label>
+                        <input [(ngModel)]="venta.serie" type="text" class="form-control" name="serie">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Numero</label>
+                        <input [(ngModel)]="venta.numComprobante" type="text" class="form-control" name="numero">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Fecha</label>
+                        <input [(ngModel)]="venta.fecha" type="text" class="form-control" name="fecha">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="">Cliente</label>
+                        <select [(ngModel)]="venta.cliente" class="form-control" name="cliente" [compareWith]="compararClientes">
+                            <option *ngFor="let c of clientes" [ngValue]="c">{{c.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Numero</label>
+                        <input type="number" class="form-control">
+                    </div>
+                   
+                    <div class="form-group col-md-3">
+                        <label for="">Direccion</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                
+                <app-detalle-venta [detallesH]="detallesP" (pasarDetallesH)="onPasarDetallesH($event)"></app-detalle-venta>
+
+                <div class="form-row">
+                    <div class="form-group col-md-9">
+                        <label for="">Obs</label>
+                        <textarea [(ngModel)]="venta.observacion" type="text" class="form-control" name="observacion"></textarea>
+                    </div>
+                    <div class="form-group col-md-3 d-flex">
+                        <button class="btn btn-danger" (click)="actualizarVenta()">Grabar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

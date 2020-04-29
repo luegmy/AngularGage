@@ -19,6 +19,10 @@ import { TableroComponent } from './Tablero/tablero.component';
 import { ListarVentaComponent } from './Venta/listar-venta/listar-venta.component';
 import { AgregarVentaComponent } from './Venta/agregar-venta/agregar-venta.component';
 import { EditarVentaComponent } from './Venta/editar-venta/editar-venta.component';
+import { AppComponent2 } from 'src/app/Material/app.component';
+import { PersonComponent } from 'src/app/Material/person.component';
+
+import { DialogoDetalleVentaComponent } from './Dialogo/dialogo-detalle-venta/dialogo-detalle-venta.component';
 
 import { FiltroClientePipe } from './Filtro/filtroCliente.pipe';
 import { FiltroProductoPipe } from './Filtro/filtroProducto.pipe';
@@ -46,8 +50,10 @@ import { VentaService } from './Venta/venta.service';
     ListarVentaComponent,
     AgregarVentaComponent,
     EditarVentaComponent,
-    DetalleVentaComponent
-
+    DetalleVentaComponent,
+    DialogoDetalleVentaComponent,
+AppComponent2,
+PersonComponent
   ],
   imports: [
     BrowserModule,

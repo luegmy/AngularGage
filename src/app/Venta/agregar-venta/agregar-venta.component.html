@@ -61,11 +61,6 @@
                     <button class="btn btn-success mt-4" (click)="agregarDetalle()">Agregar</button>
                 </div>
 
-
-
-
-                <app-detalle-venta [detallesH]="detallesP"></app-detalle-venta>
-
                 <div class="form-row">
                     <div class="form-group col-md-9">
                         <label for="">Obs</label>
@@ -74,23 +69,6 @@
                     <div class="form-group col-md-3 d-flex">
                         <button class="btn btn-danger" (click)="guardarVenta()">Grabar</button>
                     </div>
-                </div>
-
-                <div style="float: right; width:100%;">
-
-                    <h3>Form Status</h3>
-                    <b>valid : </b>{{registroForm.valid}}
-                    <b>invalid : </b>{{registroForm.invalid}}
-                    <b>touched : </b>{{registroForm.touched}}
-                    <b>untouched : </b>{{registroForm.untouched}}
-                    <b>pristine : </b>{{registroForm.pristine}}
-                    <b>dirty : </b>{{registroForm.dirty}}
-                    <b>disabled : </b>{{registroForm.disabled}}
-                    <b>enabled : </b>{{registroForm.enabled}}
-
-                    <h3>Form Value</h3>
-                    {{registroForm.value |json}}
-
                 </div>
             </form>
         </div>

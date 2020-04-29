@@ -1,6 +1,6 @@
 <div class="container col-md-6">
-    <div class="card">
-            <h3 class="card-title text-left pl-4 pt-2">ACTUALIZAR CLIENTE</h3>
+    <div class="card border-light shadow-sm">
+            <h5 class="card-title text-left pl-4 pt-2">ACTUALIZAR CLIENTE</h5>
         <div class="card-body">
             <form action="">
                 <div class="form-group">
@@ -9,7 +9,7 @@
                     <label for="">Direccion</label>
                     <input [(ngModel)]="cliente.direccion" name="direccion" type="text" class="form-control">
                     <label for="">Documento</label>
-                    <select [(ngModel)]="cliente.documento" name="documento" class="form-control">
+                    <select [(ngModel)]="cliente.documento" name="documento" class="form-control" [compareWith]="compararDocumentos">
                         <option *ngFor="let d of documentos" [ngValue]="d">{{d.descripcion}}</option>
                     </select>
                     <label for="">Nro. Doc</label>

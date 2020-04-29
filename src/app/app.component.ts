@@ -1,8 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ClienteService } from './Cliente/cliente.service';
-import { AgregarClienteComponent } from './Cliente/agregar/agregarCliente.component';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
