@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
 })
 export class DetalleVentaComponent implements OnInit {
 
-  productos:Producto[]
+ 
   @Input() detallesH: DetalleVenta[];
-  detalle: DetalleVenta = new DetalleVenta();
-
-  @Output() pasarDetalleH = new EventEmitter<string>();
-
-  hola:string="Hola papa"
+  @Input() numComprobante:number
+  
+  @Output() pasarDetalleH = new EventEmitter<any[]>();
+  productos:Producto[]
+  detalleP: DetalleVenta = new DetalleVenta();
 
   constructor(private servicio: VentaService, private servicioP: ProductoService,private router:Router) { }
 
@@ -27,13 +27,14 @@ export class DetalleVentaComponent implements OnInit {
   }
 
   editarDetalle(codigo: number, numero: number, i) {
-    this.servicio.getDetalleVentaId(codigo, numero).subscribe(data => this.detalle = data);
+    this.servicio.getDetalleVentaId(codigo, numero).subscribe(data => this.detalleP = data);
     this.detallesH.splice(i, 1);
   }
   
-  agregarDetalle2() {
-    console.log(this.pasarDetalleH)
-    this.pasarDetalleH.emit(this.hola);
+  agregarDetalle() {
+    this.detalleP.id={"codProducto":this.detalleP.producto.codProducto,"numComprobante":this.numComprobante}
+    this.detallesH.push(this.detalleP)
+    this.pasarDetalleH.emit(this.detallesH);
   }
 
   //funcion para poner por defecto un valor en el select

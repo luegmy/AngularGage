@@ -67,38 +67,4 @@
 			<span aria-hidden="true">&times;</span>
 		  </button>
 		</div>
-		<div class="modal-body">
-			<div class="container col-md-6">
-				<div class="card border-light shadow-sm">
-						<h5 class="card-title text-left pl-4 pt-2">ACTUALIZAR CLIENTE</h5>
-					<div class="card-body">
-						<form action="">
-							<div class="form-group">
-								<label for="">Nombre</label>
-								<input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control">
-								<label for="">Direccion</label>
-								<input [(ngModel)]="cliente.direccion" name="direccion" type="text" class="form-control">
-								<label for="">Documento</label>
-								<select [(ngModel)]="cliente.documento" name="documento" class="form-control" [compareWith]="compararDocumentos">
-									<option *ngFor="let d of documentos" [ngValue]="d">{{d.descripcion}}</option>
-								</select>
-								<label for="">Nro. Doc</label>
-								<input [(ngModel)]="cliente.nroDocumento" name="nroDocumento" type="text" class="form-control">
-								<label for="">Telefono</label>
-								<input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control">
-								<label for="">Correo</label>
-								<input [(ngModel)]="cliente.correo" name="correo" type="text" class="form-control">
-							</div>
-							<button (click)="actualizarCliente()" class="btn btn-danger">Guardar</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
-		</div>
-	  </div>
-	</div>
-  </div>
+	

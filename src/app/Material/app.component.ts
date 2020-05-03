@@ -6,21 +6,16 @@ import { PersonComponent } from './person.component';
     templateUrl: './app.component.html'
 })
 export class AppComponent2 {
-    @ViewChild('child1') childOne:PersonComponent;
-  
-    constructor() { }
-  
-    ngOnInit() {
-      this.childOne.emitEvent
-      .subscribe(
-        res =>
-        {
-        console.log("Atributo:" + res);
-        }
-      );
-    }
-  
-    change():void{
-      this.childOne.function1();
-    }		
+  @ViewChild(PersonComponent ) child: PersonComponent ;
+
+  ngOnInit() {
+  }
+  counter = 0;
+
+  increaseCounter() {
+    this.counter++;
+  }
+  getHelloWorldCounterValue(){
+ this.counter = this.child.getCounter();
+}
 } 

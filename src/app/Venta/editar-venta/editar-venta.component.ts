@@ -4,7 +4,6 @@ import { Venta } from '../modelo/Venta';
 import { Router } from '@angular/router';
 import { DetalleVenta } from '../modelo/DetalleVenta';
 import { ClienteService } from 'src/app/Cliente/cliente.service';
-import { ProductoService } from 'src/app/Producto/producto.service';
 import { Cliente } from 'src/app/Cliente/Modelo/cliente/Cliente';
 import { Comprobante } from '../modelo/Comprobante';
 
@@ -15,24 +14,15 @@ import { Comprobante } from '../modelo/Comprobante';
 })
 export class EditarVentaComponent implements OnInit {
 
- // a) almacenar datos del detalle para mostrar en la lista
-  //cuando se pulsa el boton agregar
   detallesP: DetalleVenta[] = []
   detalleP:DetalleVenta=new DetalleVenta()
-  // b) almacenar datos del detalle de venta y la venta
-  //ya que se guarda como objeto y no como formGroup.value
-  detalle: DetalleVenta = new DetalleVenta();
-  detalles: DetalleVenta[] = []
   venta: Venta = new Venta();
-  // c) generar una llave primaria compuesta
-  id = {}
  
   clientes: Cliente[]
   comprobantes: Comprobante[]
 
 
-  constructor(private servicio: VentaService, private router: Router, private servicioC: ClienteService,
-    private servicioP: ProductoService) { }
+  constructor(private servicio: VentaService, private router: Router, private servicioC: ClienteService) { }
 
   ngOnInit(): void {
     this.servicio.getComprobantes().subscribe(data => this.comprobantes = data);
@@ -47,8 +37,8 @@ export class EditarVentaComponent implements OnInit {
     this.servicio.getDetalleVenta(+numero).subscribe(data => this.detallesP = data);
   }
 
-  onPasarDetallesH($event){
-    console.log("evento"+$event)
+  agregar(e){
+    this.detallesP=e
   }
 
   //funcion para poner por defecto un valor en el select
@@ -72,7 +62,7 @@ export class EditarVentaComponent implements OnInit {
       .subscribe(data => {
         alert("Se agrego con exito...!!");
       })
-    this.servicio.createDetalleVenta(this.detalles)
+    this.servicio.createDetalleVenta(this.detallesP)
       .subscribe(data => {
         this.router.navigate(["listarVenta"]);
       })

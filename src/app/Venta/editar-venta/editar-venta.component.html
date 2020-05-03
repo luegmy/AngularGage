@@ -1,5 +1,4 @@
 <div class="container">
-    <router-outlet></router-outlet>
     <div class="card border-light shadow-sm">
         <h5 class="card-title text-left pl-4 pt-2">GENERAR VENTA</h5>
         <div class="card-body">
@@ -41,9 +40,10 @@
                         <label for="">Direccion</label>
                         <input type="text" class="form-control">
                     </div>
+                    
                 </div>
                 
-                <app-detalle-venta [detallesH]="detallesP" (pasarDetallesH)="onPasarDetallesH($event)"></app-detalle-venta>
+                <app-detalle-venta [numComprobante]="venta.numComprobante" [detallesH]="detallesP" (pasarDetallesH)="agregar($event)"></app-detalle-venta>
 
                 <div class="form-row">
                     <div class="form-group col-md-9">

@@ -11,7 +11,7 @@ import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmaci
   styleUrls: ['./listarCliente.component.css']
 })
 export class ListarClienteComponent implements OnInit {
-
+  cliente: Cliente = new Cliente();
   filtrarClientes = "";
   clientes: Cliente[];
   totalPages: number[];
@@ -95,6 +95,10 @@ export class ListarClienteComponent implements OnInit {
   setOrder(order: string): void {
     this.order = order;
     this.cargarClientes();
+  }
+
+  actualizarCliente(){
+
   }
 
 }
