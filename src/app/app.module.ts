@@ -32,6 +32,8 @@ import { ClienteService } from './Cliente/cliente.service';
 import { ProductoService } from './Producto/producto.service';
 import { DetalleVentaComponent } from './Venta/detalle-venta/detalle-venta.component';
 import { VentaService } from './Venta/venta.service';
+import { PaginacionComponent } from './Paginacion/paginacion/paginacion.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { VentaService } from './Venta/venta.service';
     DetalleVentaComponent,
     DialogoDetalleVentaComponent,
 AppComponent2,
-PersonComponent
+PersonComponent,
+PaginacionComponent
   ],
   imports: [
     BrowserModule,
@@ -65,10 +68,7 @@ PersonComponent
     MaterialModule,
     SidebarModule
   ],
-  providers: [
-    ClienteService,
-    ProductoService,
-    VentaService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

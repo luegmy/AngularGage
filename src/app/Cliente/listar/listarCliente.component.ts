@@ -13,24 +13,24 @@ import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmaci
 export class ListarClienteComponent implements OnInit {
   cliente: Cliente = new Cliente();
   filtrarClientes = "";
-  clientes: Cliente[];
-  totalPages: number[];
 
-
+  clientes: Cliente[] = [];
   page = 0;
-  size = 10;
+  totalPages: number[];
+  numClientes: number
+  size = 2;
+
   order = 'codCliente';
   asc = true;
-
   isFirst = false;
   isLast = false;
   //columnasParaMostrar = ['nombre', 'direccion', 'documento', 'numero', 'telefono', 'correo', 'editar', 'eliminar'];
   constructor(private dialogo: MatDialog, public servicio: ClienteService, private router: Router) { }
 
   ngOnInit() {
-   /*  this.servicio.getClientes()
-      .subscribe(data => this.clientes = data); */
-      this.cargarClientes();
+    /*  this.servicio.getClientes()
+       .subscribe(data => this.clientes = data); */
+    this.cargarClientes();
   }
 
   cargarClientes() {
@@ -97,7 +97,7 @@ export class ListarClienteComponent implements OnInit {
     this.cargarClientes();
   }
 
-  actualizarCliente(){
+  actualizarCliente() {
 
   }
 

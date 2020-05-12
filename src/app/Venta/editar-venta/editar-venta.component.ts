@@ -14,12 +14,20 @@ import { Comprobante } from '../modelo/Comprobante';
 })
 export class EditarVentaComponent implements OnInit {
 
+  //Comunicacion entre componentes
   detallesP: DetalleVenta[] = []
-  detalleP:DetalleVenta=new DetalleVenta()
+  codigoProducto: number
+
   venta: Venta = new Venta();
- 
+
   clientes: Cliente[]
   comprobantes: Comprobante[]
+
+  //para cargar los importes en el componente hijo (detalleVentaComponent)
+  total: any = 0.00
+  subtotal: any = 0.00
+  igv: any = 0.00
+  subtotalAuxiliar: number = 0
 
 
   constructor(private servicio: VentaService, private router: Router, private servicioC: ClienteService) { }
@@ -34,11 +42,28 @@ export class EditarVentaComponent implements OnInit {
   editarVenta() {
     let numero = localStorage.getItem("numero");
     this.servicio.getVentaNumero(+numero).subscribe(data => this.venta = data)
-    this.servicio.getDetalleVenta(+numero).subscribe(data => this.detallesP = data);
+    this.servicio.getDetalleVenta(+numero).subscribe(data => {
+      this.detallesP = data;
+      this.detallesP.forEach(data => {
+        this.subtotalAuxiliar = (data.cantidad * data.precio);
+        this.total = (this.total - (-this.subtotalAuxiliar)).toFixed(2)
+        this.subtotal = (this.total / 1.18).toFixed(2)
+        this.igv = (this.total - this.subtotal).toFixed(2)
+      })
+    });
   }
 
-  agregar(e){
-    this.detallesP=e
+  //desde el componente hijo se trae el valor
+  agregar(e) {
+    this.detallesP = e
+  }
+  //desde el componente hijo se trae el valor
+  monto(e) {
+    this.venta.monto = e
+  }
+
+  codigo(e) {
+    this.codigoProducto = e
   }
 
   //funcion para poner por defecto un valor en el select
@@ -62,10 +87,15 @@ export class EditarVentaComponent implements OnInit {
       .subscribe(data => {
         alert("Se agrego con exito...!!");
       })
-    this.servicio.createDetalleVenta(this.detallesP)
+
+      this.servicio.createDetalleVenta(this.detallesP)
       .subscribe(data => {
         this.router.navigate(["listarVenta"]);
       })
+
+
+
+
   }
 
 }

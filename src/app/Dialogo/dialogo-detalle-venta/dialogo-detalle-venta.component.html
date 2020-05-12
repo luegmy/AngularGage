@@ -1,31 +1,25 @@
 <div class="card text-center border-light shadow-sm">
 	<h5 class="car-title text-left pl-4 pt-2">DETALLE DE VENTA</h5>
 	<div class="card-body">
-
 		<div class="table-responsive">
 			<table class="table table-hover table-sm table-bordered">
 				<thead>
 					<tr class="shadow-sm">
-						<th>CODIGO</th>
+						<th>NUMERO</th>
 						<th>PRODUCTO</th>
 						<th>PRECIO</th>
 						<th>CANTIDAD</th>
 						<th>SUBTOTAL</th>
-						<th colspan="2" class="text-center">ACCIONES</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					<tr *ngFor="let detalle of detalles" class="shadow-sm">
-						<td>{{detalle.producto.codProducto}}</td>
+						<td>{{detalle.id.numComprobante}}</td>
 						<td>{{detalle.producto.descripcion}}</td>
 						<td>{{detalle.precio}}</td>
 						<td>{{detalle.cantidad}}</td>
 						<td>{{detalle.cantidad * detalle.precio}}</td>
-						<td class="text-center"><a class="btn btn-info btn-sm" title="Editar detalle">
-								<i class="small material-icons text-white">edit</i></a>
-							<a class="btn btn-danger btn-sm" title="Eliminar detalle">
-								<i class="small material-icons text-white">delete</i></a></td>
 					</tr>
 				</tbody>
 

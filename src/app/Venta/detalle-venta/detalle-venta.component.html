@@ -1,25 +1,26 @@
 <div class="form-row">
-	<div class="form-group col-md-3">
+	<div class="form-group col-md-6">
 		<label for="">Producto</label>
-		<select [(ngModel)]="detalleP.producto" class="form-control" name="producto" [compareWith]="compararProductos">
+		<select [(ngModel)]="detalleP.producto" class="form-control form-control-sm" name="producto"
+			[compareWith]="compararProductos">
 			<option *ngFor="let p of productos" [ngValue]="p">{{p.descripcion}}</option>
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-md-2">
 		<label for="">Precio</label>
-		<input [(ngModel)]="detalleP.precio" type="text" class="form-control" name="precio">
+		<input [(ngModel)]="detalleP.precio" type="text" class="form-control form-control-sm" name="precio">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-md-2">
 		<label for="">Cantidad</label>
-		<input [(ngModel)]="detalleP.cantidad" type="text" class="form-control" name="cantidad">
+		<input [(ngModel)]="detalleP.cantidad" type="text" class="form-control form-control-sm" name="cantidad">
 	</div>
-	<div class="form-group col-md-3 d-flex">
-		<button class="btn btn-success mt-4" (click)="agregarDetalle()">Agregar</button>
+	<div class="col-auto mt-4">
+		<button class="btn btn-outline-success btn-block btn-sm mt-1" (click)="agregarDetalle()">Agregar</button>
 	</div>
 </div>
 
 <div class="card text-center border-light shadow-sm">
-	<h5 class="car-title text-left pl-4 pt-2">DETALLE DE VENTA</h5>
+	<h6 class="car-title text-left pl-4 pt-2">DETALLE DE VENTA</h6>
 	<div class="card-body">
 
 		<div class="table-responsive">
@@ -45,15 +46,41 @@
 						<td>{{detalle.cantidad}}</td>
 						<td>{{detalle.cantidad * detalle.precio}}</td>
 						<td class="text-center"><a class="btn btn-info btn-sm"
-								(click)="editarDetalle(detalle.id.codProducto,detalle.id.numComprobante,indice)"
+								(click)="editarDetalle(detalle,indice)"
 								title="Editar detalle">
 								<i class="small material-icons text-white">edit</i></a>
-							<a class="btn btn-danger btn-sm" (click)="eliminar(indice)" title="Eliminar detalle">
+							<a class="btn btn-danger btn-sm"
+								(click)="eliminarDetalle(detalle,indice)"
+								title="Eliminar detalle">
 								<i class="small material-icons text-white">delete</i></a></td>
 					</tr>
 				</tbody>
 
 			</table>
+		</div>
+		<div class="row justify-content-end font-weight-bold">
+			<div class="col-2 text-right">
+				{{subtotal}}
+			</div>
+			<div class="col-2 text-left">
+				Subtotal
+			</div>
+		</div>
+		<div class="row justify-content-end font-weight-bold">
+			<div class="col-2 text-right">
+				{{igv}}
+			</div>
+			<div class="col-2 text-left">
+				IGV
+			</div>
+		</div>
+		<div class="row justify-content-end font-weight-bold">
+			<div class="col-2 text-right">
+				{{total}}
+			</div>
+			<div class="col-2 text-left">
+				Total
+			</div>
 		</div>
 	</div>
 </div>

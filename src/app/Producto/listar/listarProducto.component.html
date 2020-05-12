@@ -36,6 +36,8 @@
 					</tbody>
 					
 				</table>
+				<app-paginacion  [page]="page" [totalPages]="totalPages"
+					[size]="size" (paginaEmitter)="irPorPagina($event)"></app-paginacion>
 			</div>
 		</div>
 	</div>

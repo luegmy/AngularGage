@@ -3,7 +3,7 @@ import { Venta } from './Venta';
 
 export class DetalleVenta{
     id={};
-    precio:number;
+    precio:number=0.00;
     cantidad:number;
     producto:Producto;
     venta:Venta;

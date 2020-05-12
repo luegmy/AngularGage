@@ -21,20 +21,24 @@ export class VentaService {
     return this.http.post<Venta>(this.url + "guardar", venta);
   }
 
-  getVentaNumero(numero: number) :Observable<any> {
+  getVentaNumero(numero: number): Observable<any> {
     return this.http.get<Venta>(this.url + "editar/" + numero)
   }
 
   getDetalleVenta(numero: number) {
-    return this.http.get<DetalleVenta[]>(this.url + numero)
+    return this.http.get<DetalleVenta[]>(this.url + "detalle/" + numero)
   }
 
   getDetalleVentaId(codigo: number, numero: number) {
-    return this.http.get<DetalleVenta>(this.url + "editar/detalle/" + codigo + "/" + numero)
+    return this.http.get<DetalleVenta>(this.url + "detalle/editar/" + codigo + "/" + numero)
   }
 
   createDetalleVenta(detalle: DetalleVenta[]) {
-    return this.http.post<DetalleVenta[]>(this.url + "guardar/detalle", detalle);
+    return this.http.post<DetalleVenta[]>(this.url + "detalle/guardar", detalle);
+  }
+
+  deleteDetalleVenta(codigo: number, numero: number) {
+    return this.http.delete<DetalleVenta>(this.url + "detalle/eliminar/" + codigo + "/" + numero);
   }
 
   getComprobantes() {
