@@ -17,11 +17,15 @@ export class VentaService {
     return this.http.get<Venta[]>(this.url);
   }
 
+  getNumeroComprobante(comprobante: number) {
+    return this.http.get(this.url + "obtener/" + comprobante)
+  }
+
   createVenta(venta: Venta) {
     return this.http.post<Venta>(this.url + "guardar", venta);
   }
 
-  getVentaNumero(numero: number): Observable<any> {
+  getVenta(numero: number): Observable<any> {
     return this.http.get<Venta>(this.url + "editar/" + numero)
   }
 

@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListarClienteComponent } from './Cliente/listar/listarCliente.component';
 import { AgregarClienteComponent } from './Cliente/agregar/agregarCliente.component';

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Cliente } from 'src/app/Cliente/Modelo/cliente/Cliente';
 import { ClienteService } from 'src/app/Cliente/cliente.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmacion.component';
+import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmacion/dialogo-confirmacion.component';
 
 @Component({
   selector: 'app-listarCliente',

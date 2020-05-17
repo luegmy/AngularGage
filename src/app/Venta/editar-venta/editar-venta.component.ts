@@ -41,7 +41,7 @@ export class EditarVentaComponent implements OnInit {
 
   editarVenta() {
     let numero = localStorage.getItem("numero");
-    this.servicio.getVentaNumero(+numero).subscribe(data => this.venta = data)
+    this.servicio.getVenta(+numero).subscribe(data => this.venta = data)
     this.servicio.getDetalleVenta(+numero).subscribe(data => {
       this.detallesP = data;
       this.detallesP.forEach(data => {
@@ -83,6 +83,7 @@ export class EditarVentaComponent implements OnInit {
   }
 
   actualizarVenta() {
+    
     this.servicio.createVenta(this.venta)
       .subscribe(data => {
         alert("Se agrego con exito...!!");

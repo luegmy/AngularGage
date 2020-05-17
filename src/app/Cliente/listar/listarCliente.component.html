@@ -7,19 +7,17 @@
 					<i class="medium material-icons text-white">open_in_new</i>
 				</a>
 				<input type="text" class="form-control col-8 offset-2 offset-md-3" placeholder="Busqueda ..."
-					[(ngModel)]="filtrarClientes" name="filtrarClientes">
+					[(ngModel)]="filtrarClientes" name="filtrarClientes" spellcheck="false">
 			</div>
 			<div class="table-responsive">
 				<table class="table table-hover table-sm table-bordered">
 					<thead>
 						<tr class="shadow-sm">
-							<th (click)="setOrder('nombre')">Nombre</th>
-							<th (click)="setOrder('direccion')">Direccion</th>
-							<th (click)="setOrder('nroDocumento')">RUC/DNI</th>
-							<th (click)="setOrder('telefono')">Telefono</th>
+							<th>Nombre</th>
+							<th>Direccion</th>
+							<th>RUC/DNI</th>
+							<th >Telefono</th>
 							<th>Correo</th>
-							<th><i class="medium material-icons" (click)="sort()"
-									style="cursor: pointer;">thumbs_up_down</i></th>
 							<th colspan="2" class="text-center">Acciones</th>
 						</tr>
 					</thead>

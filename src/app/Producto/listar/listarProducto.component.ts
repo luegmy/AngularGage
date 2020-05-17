@@ -14,10 +14,10 @@ export class ListarProductoComponent implements OnInit {
   filtrarProductos = "";
 
   productos: Producto[] = [];
-  page = 0;
+  page:number = 1;
   totalPages: number[];
-  numClientes: number
-  size = 25;
+  numProductos: number
+  pageSize = 15;
 
   order = 'codProducto';
   asc = true;
@@ -27,16 +27,17 @@ export class ListarProductoComponent implements OnInit {
   constructor(private servicio: ProductoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cargarProductos(this.page);
+    this.servicio.getProductos().subscribe(dato=>{this.productos=dato;
+    this.numProductos=dato.length});
   }
-
+/* 
   irPorPagina(page: number){
     this.page = page;
     this.cargarProductos(page);
-  }
+  } */
 
-  cargarProductos(page:number) {
-    this.servicio.getProductosPaginacion(page, this.size, this.order, this.asc).subscribe(
+  cargarProductos() {
+    this.servicio.getProductosPaginacion(this.page, this.pageSize, this.order, this.asc).subscribe(
       dato => {
         this.productos = dato.content;
         this.isFirst = dato.first;

@@ -31,12 +31,10 @@
 							<td>{{venta.cliente.nombre}}</td>
 							<td>{{venta.monto}}</td>
 							<td class="text-center"><a class="btn btn-primary btn-sm" (click)="mostrarDetalle(venta)"
-									title="Mostrar detalle venta">
-									<i class="small material-icons text-white">remove_red_eye</i></a>
+									title="Mostrar detalle venta"><i class="far fa-eye text-white" aria-hidden="true"></i></a>
 								<a class="btn btn-info btn-sm" (click)="editarVenta(venta)" title="Editar venta">
-									<i class="small material-icons text-white">edit</i></a>
-								<a class="btn btn-warning btn-sm" title="Anular venta">
-									<i class="small material-icons text-white">cancel</i></a>
+									<i class="far fa-edit text-white"></i></a>
+								<a class="btn btn-warning btn-sm" title="Anular venta"><i class="fas fa-backspace text-white"></i> </a>
 							</td>
 					</tbody>
 

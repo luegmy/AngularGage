@@ -6,12 +6,13 @@
 				<a routerLink="/agregarProducto" class="btn btn-success btn-sm col-2 col-md-1" title="Nuevo producto"><i
 						class="medium material-icons text-white">open_in_new</i> </a>
 				<input class="form-control col-8 offset-2 offset-md-3" type="text" placeholder="Busqueda ..."
-				[(ngModel)]="filtrarProductos" name="filtrarProductos">
+					[(ngModel)]="filtrarProductos" name="filtrarProductos">
 			</div>
 			<div class="table-responsive">
 				<table class="table table-hover table-sm table-bordered" id="tablaProducto">
 					<thead>
 						<tr class="shadow-sm">
+							<th>#</th>
 							<th>Descripcion</th>
 							<th>Precio</th>
 							<th>Venta</th>
@@ -22,7 +23,9 @@
 					</thead>
 
 					<tbody>
-						<tr *ngFor="let producto of productos | filtroProducto:filtrarProductos" class="shadow-sm">
+						<tr *ngFor="let producto of productos|filtroProducto:filtrarProductos | paginate: { itemsPerPage: pageSize, currentPage: page ,totalItems: numProductos};let indice=index"
+							class="shadow-sm">
+							<td>{{indice+1}}</td>
 							<td class="text-left">{{producto.descripcion}}</td>
 							<td>{{producto.precioCompra}}</td>
 							<td>{{producto.precioVenta}}</td>
@@ -34,10 +37,12 @@
 								<a class="btn btn-danger btn-sm" title="Eliminar producto">
 									<i class="small material-icons text-white">delete</i></a></td>
 					</tbody>
-					
+
 				</table>
+				<pagination-controls (pageChange)="page = $event"></pagination-controls>
+				<!-- 
 				<app-paginacion  [page]="page" [totalPages]="totalPages"
-					[size]="size" (paginaEmitter)="irPorPagina($event)"></app-paginacion>
+					[size]="size" (paginaEmitter)="irPorPagina($event)"></app-paginacion> -->
 			</div>
 		</div>
 	</div>
