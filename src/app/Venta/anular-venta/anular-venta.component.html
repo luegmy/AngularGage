@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="card border-light shadow-sm">
+        <h6 class="card-title text-left pl-4 pt-2">ANULAR VENTA</h6>
+        <div class="card-body">
+            <form action="">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="">Serie</label>
+                        <input [ngModel]="venta.serie" type="text" disabled class="form-control form-control-sm" name="serie">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Numero</label>
+                        <input [ngModel]="numeroAnulado" type="number" disabled class="form-control form-control-sm" name="numComprobante" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Fecha</label>
+                        <input [(ngModel)]="ventaNota.fecha" type="date" class="form-control form-control-sm" name="fecha" >
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="">Comprobante</label>
+                        <select [(ngModel)]="ventaNota.comprobante" class="form-control form-control-sm" name="comprobante" (change)="cargarNumeroComprobante()">
+                            <option *ngFor="let c of comprobanteNotas" [ngValue]="c">{{c.descripcion}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Numero</label>
+                        <input  [(ngModel)]="ventaNota.numComprobante" type="number" class="form-control form-control-sm" name="numero">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Tipo de Nota</label>
+                        <select [(ngModel)]="credito" class="form-control form-control-sm" name="cliente">
+                            <option *ngFor="let c of notaCreditos" [ngValue]="c">{{c.descripcion}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Tipo de Nota</label>
+                        <select [(ngModel)]="debito" class="form-control form-control-sm" name="cliente">
+                            <option *ngFor="let d of notaDebitos" [ngValue]="d">{{d.descripcion}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-9">
+                        <label for="">Obs</label>
+                        <textarea [(ngModel)]="ventaNota.observacion" type="text" class="form-control form-control-sm"
+                            name="observacion"></textarea>
+                    </div>
+                    <div class="form-group col-md-3 d-flex">
+                        <button class="btn btn-danger" (click)="anularVenta()">Anular</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

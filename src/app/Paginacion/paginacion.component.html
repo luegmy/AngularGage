@@ -1,10 +1,8 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         <li class="page-item"><a class="page-link" (click)="rewind()" style="cursor: pointer;">Anterior</a></li>
-        <li class="page-item" *ngFor="let p of totalPages; let i = index"><a class="page-link"
-                style="cursor: pointer;" (click)="setPage(i)"
-                [ngClass]="{'text-primary':i===page}">{{i+1}}</a></li>
+        <li class="page-item" *ngFor="let p of totalPages; let i = index"><a class="page-link" style="cursor: pointer;"
+                (click)="setPage(i)" [ngClass]="{'text-primary':i===page}">{{i+1}}</a></li>
         <li class="page-item"><a class="page-link" (click)="forward()" style="cursor: pointer;">Siguiente</a></li>
     </ul>
 </nav>
-

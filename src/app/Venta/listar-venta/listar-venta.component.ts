@@ -14,11 +14,26 @@ export class ListarVentaComponent implements OnInit {
 
   filtrarVentas = "";
   ventas: Venta[]
+  estado:number
+
+  //atributo que escucha el evento (pageChange)="page = $event"
+  page:number = 1;
+  totalPages: number[];
+  numProductos: number
+  pageSize = 10;
+
+  order = 'codProducto';
+  asc = true;
+  isFirst = false;
+  isLast = false;
 
   constructor(private router: Router, private servicio: VentaService, private dialogo: MatDialog) { }
 
   ngOnInit(): void {
-    this.servicio.getVentas().subscribe(data => this.ventas = data);
+    this.servicio.getVentas().subscribe(data => {
+      this.ventas = data;
+      data.forEach(e=>this.estado=e.estado.codEstado)
+    })
   }
 
   mostrarDetalle(venta: Venta): void {
@@ -29,6 +44,17 @@ export class ListarVentaComponent implements OnInit {
   editarVenta(venta: Venta): void {
     localStorage.setItem("numero", venta.numComprobante.toString());
     this.router.navigate(["editarVenta"]);
+  }
+
+  anularVenta(venta:Venta){
+    localStorage.setItem("numero", venta.numComprobante.toString());
+    this.router.navigate(["anularVenta"]);
+  }
+
+  desactivarBotonAnular(){
+    if(this.estado=3){
+      return true
+    }
   }
 
 

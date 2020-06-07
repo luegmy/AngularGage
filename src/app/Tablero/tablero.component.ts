@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from '../Producto/Modelo/producto/Producto';
-import { ProductoService } from 'src/app/Producto/producto.service';
+import { VentaService } from '../Venta/venta.service';
 
 @Component({
   selector: 'app-tablero',
@@ -9,11 +8,17 @@ import { ProductoService } from 'src/app/Producto/producto.service';
 })
 export class TableroComponent implements OnInit {
 
-  productos:Producto[];
-  constructor(private servicio:ProductoService) { }
+  monto: number
+  constructor(private servicio: VentaService) { }
 
   ngOnInit(): void {
-    this.servicio.getProductos().subscribe(dato=>this.productos=dato);
+    this.servicio.getVentas().subscribe(data => {
+      this.monto = data.map(v => v.monto).reduce(this.getMonto, 0).toFixed(2)
+    })
+  }
+
+  getMonto(total, num) {
+    return total + num;
   }
 
 }

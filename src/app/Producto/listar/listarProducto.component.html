@@ -1,10 +1,10 @@
 <div class="container">
 	<div class="card text-center border-light shadow-sm">
-		<h5 class="car-title text-left pl-4 pt-2">LISTA DE PRODUCTOS</h5>
+		<h6 class="car-title text-left pl-4 pt-2">LISTA DE PRODUCTOS</h6>
 		<div class="card-body">
 			<div class="d-flex">
-				<a routerLink="/agregarProducto" class="btn btn-success btn-sm col-2 col-md-1" title="Nuevo producto"><i
-						class="medium material-icons text-white">open_in_new</i> </a>
+				<a routerLink="/agregarProducto" class="btn btn-success btn-md col-2 col-md-1" title="Nuevo producto">
+					<i class="far fa-plus-square fa-lg text-white"></i> </a>
 				<input class="form-control col-8 offset-2 offset-md-3" type="text" placeholder="Busqueda ..."
 					[(ngModel)]="filtrarProductos" name="filtrarProductos">
 			</div>
@@ -33,11 +33,10 @@
 							<td>{{producto.tipo.descripcion}}</td>
 							<td class="text-center"><a (click)="editarProducto(producto)" class="btn btn-info btn-sm"
 									title="Editar producto">
-									<i class="small material-icons text-white">edit</i></a>
-								<a class="btn btn-danger btn-sm" title="Eliminar producto">
-									<i class="small material-icons text-white">delete</i></a></td>
+									<i class="far fa-edit fa-sm text-white"></i></a>
+								<a class="btn btn-danger btn-sm" (click)="eliminarProducto(producto)" title="Eliminar producto">
+									<i class="far fa-trash-alt fa-sm text-white"></i></a></td>
 					</tbody>
-
 				</table>
 				<pagination-controls (pageChange)="page = $event"></pagination-controls>
 				<!-- 

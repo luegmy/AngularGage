@@ -45,7 +45,7 @@
 
                 </div>
 
-                <app-detalle-venta [numComprobante]="venta.numComprobante" [detallesH]="detallesP" [total]="total" (pasarCodigo)="codigo($event)"
+                <app-detalle-venta [detallesH]="detallesP" [total]="total" (pasarCodigo)="codigo($event)"
                     (pasarDetallesH)="agregar($event)" [subtotal]="subtotal" [igv]="igv" (pasarMonto)="monto($event)"></app-detalle-venta>
 
                 <div class="form-row">

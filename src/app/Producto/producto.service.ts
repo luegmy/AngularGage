@@ -16,7 +16,7 @@ export class ProductoService {
 
   getProductosPaginacion(page: number, size: number, order: string, asc: boolean): Observable<any> {
     /* return this.http.get<Cliente[]>(this.urlLista); */
-    return this.http.get<Producto[]>(this.url +"pagina?"+"page=" + page + "&size=" + size + "&order=" + order + "&asc=" + asc);
+    return this.http.get<Producto[]>(this.url + "pagina?" + "page=" + page + "&size=" + size + "&order=" + order + "&asc=" + asc);
   }
 
   getProductos() {
@@ -37,5 +37,9 @@ export class ProductoService {
 
   createProductos(producto: Producto) {
     return this.http.post<Producto>(this.url + "guardar", producto)
+  }
+
+  deleteProducto(producto: Producto) {
+    return this.http.delete<Producto>(this.url + "eliminar/" + producto.codProducto)
   }
 }

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/Producto/Modelo/producto/Producto';
 import { ProductoService } from 'src/app/Producto/producto.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogoConfirmacionComponent } from 'src/app/Dialogo/dialogo-confirmacion/dialogo-confirmacion.component';
 
 @Component({
   selector: 'app-listarProducto',
@@ -14,46 +16,40 @@ export class ListarProductoComponent implements OnInit {
   filtrarProductos = "";
 
   productos: Producto[] = [];
+  //atributo que escucha el evento (pageChange)="page = $event"
   page:number = 1;
   totalPages: number[];
   numProductos: number
-  pageSize = 15;
+  pageSize = 10;
 
   order = 'codProducto';
   asc = true;
   isFirst = false;
   isLast = false;
 
-  constructor(private servicio: ProductoService, private router: Router) { }
+  constructor(private dialogo: MatDialog,private servicio: ProductoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.servicio.getProductos().subscribe(dato=>{this.productos=dato;
-    this.numProductos=dato.length});
+    this.servicio.getProductos().subscribe(dato=>this.productos=dato)
   }
-/* 
-  irPorPagina(page: number){
-    this.page = page;
-    this.cargarProductos(page);
-  } */
-
-  cargarProductos() {
-    this.servicio.getProductosPaginacion(this.page, this.pageSize, this.order, this.asc).subscribe(
-      dato => {
-        this.productos = dato.content;
-        this.isFirst = dato.first;
-        this.isLast = dato.last;
-        this.totalPages = new Array(dato['totalPages']);
-      },
-      err=>{
-        console.log(err.error)
-      }
-      );
-
-    }
 
   editarProducto(producto: Producto): void {
     localStorage.setItem("codigo", producto.codProducto.toString());
     this.router.navigate(["editarProducto"]);
+  }
+
+  eliminarProducto(producto:Producto){
+    this.dialogo.open(DialogoConfirmacionComponent, {
+      data: { nombre: 'Realmente deseas eliminar al producto ' + producto.descripcion + '?' }
+    })
+      .afterClosed()
+      .subscribe((confirmado: boolean) => {
+        if (!confirmado) return;
+        this.servicio.deleteProducto(producto)
+          .subscribe(data => {
+            this.productos = this.productos.filter(c => c !== producto)
+          });
+      });
   }
 
  

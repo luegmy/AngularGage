@@ -11,6 +11,7 @@ import { ListarVentaComponent } from './Venta/listar-venta/listar-venta.componen
 import { AgregarVentaComponent } from './Venta/agregar-venta/agregar-venta.component';
 import { EditarVentaComponent } from './Venta/editar-venta/editar-venta.component';
 import { AppComponent2 } from './Material/app.component';
+import { AnularVentaComponent } from './Venta/anular-venta/anular-venta.component';
 
 const rutas: Routes = [
 {path:'listarCliente',component:ListarClienteComponent},
@@ -23,6 +24,7 @@ const rutas: Routes = [
 {path:'listarVenta',component:ListarVentaComponent},
 {path:'agregarVenta',component:AgregarVentaComponent},
 {path:'editarVenta',component:EditarVentaComponent},
+{path:'anularVenta',component:AnularVentaComponent},
 {path:'app',component:AppComponent2},
 ];
 

@@ -36,12 +36,15 @@ export class EditarVentaComponent implements OnInit {
     this.servicio.getComprobantes().subscribe(data => this.comprobantes = data);
     this.servicioC.getClientes().subscribe(data => this.clientes = data);
     this.editarVenta();
-
   }
 
   editarVenta() {
     let numero = localStorage.getItem("numero");
-    this.servicio.getVenta(+numero).subscribe(data => this.venta = data)
+    this.servicio.getVenta(+numero).subscribe(data => {
+      this.venta = data;
+      //this.numComprobanteDetalle=data.numComprobante
+      this.venta.numComprobante=data.numComprobante%10000000
+    })
     this.servicio.getDetalleVenta(+numero).subscribe(data => {
       this.detallesP = data;
       this.detallesP.forEach(data => {

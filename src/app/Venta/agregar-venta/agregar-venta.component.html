@@ -1,35 +1,35 @@
 <div class="container">
     <div class="card border-light shadow-sm">
-        <h6 class="card-title text-left pl-4 pt-2">GENERAR VENTA</h6>
+        <h6 class="card-title text-left pl-4 pt-2">GENERAR ventaP</h6>
         <div class="card-body">
             <form action="">
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="">Comprobante</label>
-                        <select [(ngModel)]="venta.comprobante" class="form-control form-control-sm" name="comprobante"
+                        <select [(ngModel)]="ventaP.comprobante" class="form-control form-control-sm" name="comprobante"
                         (change)="cargarNumeroComprobante()">
                             <option *ngFor="let c of comprobantes" [ngValue]="c" >{{c.descripcion}}</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">Serie</label>
-                        <input [(ngModel)]="venta.serie" type="text" class="form-control form-control-sm" name="serie">
+                        <input [(ngModel)]="ventaP.serie" type="text" class="form-control form-control-sm" name="serie">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">Numero</label>
-                        <input [(ngModel)]="venta.numComprobante" type="text" class="form-control form-control-sm"
+                        <input [(ngModel)]="ventaP.numComprobante" type="text" class="form-control form-control-sm"
                             name="numero">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="">Fecha</label>
-                        <input [(ngModel)]="venta.fecha" type="date" class="form-control form-control-sm" name="fecha" >
+                        <input [(ngModel)]="ventaP.fecha" type="date" class="form-control form-control-sm" name="fecha" >
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="">Cliente</label>
-                        <select [(ngModel)]="venta.cliente" class="form-control form-control-sm" name="cliente">
+                        <select [(ngModel)]="ventaP.cliente" class="form-control form-control-sm" name="cliente">
                             <option *ngFor="let c of clientes" [ngValue]="c">{{c.nombre}}</option>
                         </select>
                     </div>
@@ -45,13 +45,13 @@
 
                 </div>
 
-                <app-detalle-venta [numComprobante]="venta.numComprobante" [detallesH]="detallesP" [total]="total" (pasarCodigo)="codigo($event)"
-                (pasarDetallesH)="agregar($event)" [subtotal]="subtotal" [igv]="igv" (pasarMonto)="monto($event)"></app-detalle-venta>
+                <app-detalle-venta [ventaH]="ventaP" [detallesH]="detallesP" (pasarCodigo)="codigo($event)"
+                (pasarDetallesH)="agregar($event)" (pasarMonto)="monto($event)"></app-detalle-venta>
 
                 <div class="form-row">
                     <div class="form-group col-md-9">
                         <label for="">Obs</label>
-                        <textarea [(ngModel)]="venta.observacion" type="text" class="form-control form-control-sm"
+                        <textarea [(ngModel)]="ventaP.observacion" type="text" class="form-control form-control-sm"
                             name="observacion"></textarea>
                     </div>
                     <div class="form-group col-md-3 d-flex">

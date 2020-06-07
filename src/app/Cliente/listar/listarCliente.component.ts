@@ -15,36 +15,22 @@ export class ListarClienteComponent implements OnInit {
   filtrarClientes = "";
 
   clientes: Cliente[] = [];
-  page = 0;
-  totalPages: number[];
-  numClientes: number
-  size = 2;
-
-  order = 'codCliente';
-  asc = true;
-  isFirst = false;
-  isLast = false;
+  
+   //atributo que escucha el evento (pageChange)="page = $event"
+   page:number = 1;
+   totalPages: number[];
+   numProductos: number
+   pageSize = 10;
+ 
+   order = 'codProducto';
+   asc = true;
+   isFirst = false;
+   isLast = false;
   //columnasParaMostrar = ['nombre', 'direccion', 'documento', 'numero', 'telefono', 'correo', 'editar', 'eliminar'];
   constructor(private dialogo: MatDialog, public servicio: ClienteService, private router: Router) { }
 
   ngOnInit() {
-    /*  this.servicio.getClientes()
-       .subscribe(data => this.clientes = data); */
-    this.cargarClientes();
-  }
-
-  cargarClientes() {
-    this.servicio.getClientesPaginacion(this.page, this.size, this.order, this.asc).subscribe(
-      data => {
-        this.clientes = data.content;
-        this.isFirst = data.first;
-        this.isLast = data.last;
-        this.totalPages = new Array(data['totalPages']);
-      },
-      err => {
-        console.log(err.error);
-      }
-    );
+     this.servicio.getClientes().subscribe(data => this.clientes = data);
   }
 
   editarCliente(cliente: Cliente): void {
@@ -68,35 +54,7 @@ export class ListarClienteComponent implements OnInit {
       });
   }
 
-  sort(): void {
-    this.asc = !this.asc;
-    this.cargarClientes();
-  }
-
-  rewind(): void {
-    if (!this.isFirst) {
-      this.page--;
-      this.cargarClientes();
-    }
-  }
-
-  forward(): void {
-    if (!this.isLast) {
-      this.page++;
-      this.cargarClientes();
-    }
-  }
-
-  setPage(page: number): void {
-    this.page = page;
-    this.cargarClientes();
-  }
-
-  setOrder(order: string): void {
-    this.order = order;
-    this.cargarClientes();
-  }
-
+ 
   actualizarCliente() {
 
   }

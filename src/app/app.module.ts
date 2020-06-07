@@ -29,6 +29,8 @@ import { PaginacionComponent } from './Paginacion/paginacion.component';
 import { FiltroClientePipe } from './Filtro/filtroCliente.pipe';
 import { FiltroProductoPipe } from './Filtro/filtroProducto.pipe';
 import { FiltroVentaPipe } from './Filtro/filtroVenta.pipe';
+import { AnularVentaComponent } from './Venta/anular-venta/anular-venta.component';
+import { EmpresaComponent } from './empresa/empresa.component';
 
 
 
@@ -53,7 +55,9 @@ import { FiltroVentaPipe } from './Filtro/filtroVenta.pipe';
     DialogoDetalleVentaComponent,
     AppComponent2,
     PersonComponent,
-    PaginacionComponent
+    PaginacionComponent,
+    AnularVentaComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,

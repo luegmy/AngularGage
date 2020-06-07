@@ -15,7 +15,7 @@
 
 				<tbody>
 					<tr *ngFor="let detalle of detalles" class="shadow-sm">
-						<td>{{detalle.id.numComprobante}}</td>
+						<td>{{detalle.id.numComprobante%10000000}}</td>
 						<td>{{detalle.producto.descripcion}}</td>
 						<td>{{detalle.precio}}</td>
 						<td>{{detalle.cantidad}}</td>

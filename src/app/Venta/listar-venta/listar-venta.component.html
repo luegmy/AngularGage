@@ -1,10 +1,10 @@
 <div class="container">
 	<div class="card text-center border-light shadow-sm">
-		<h5 class="car-title text-left pl-4 pt-2">LISTA DE VENTAS</h5>
+		<h6 class="car-title text-left pl-4 pt-2">LISTA DE VENTAS</h6>
 		<div class="card-body">
 			<div class="d-flex">
-				<a routerLink="/agregarVenta" class="btn btn-success btn-sm col-2 col-md-1" title="Nueva venta"><i
-						class="medium material-icons text-white">open_in_new</i> </a>
+				<a routerLink="/agregarVenta" class="btn btn-success btn-md col-2 col-md-1" title="Nueva venta">
+					<i class="far fa-plus-square fa-lg text-white"></i></a>
 				<input class="form-control col-8 offset-2 offset-md-3" type="text" placeholder="Busqueda ..."
 					[(ngModel)]="filtrarVentas" name="filtrarVentas">
 			</div>
@@ -23,22 +23,25 @@
 					</thead>
 
 					<tbody>
-						<tr *ngFor="let venta of ventas | filtroVenta:filtrarVentas" class="shadow-sm">
+						<tr *ngFor="let venta of ventas | filtroVenta:filtrarVentas | paginate: { itemsPerPage:
+							pageSize, currentPage: page ,totalItems: numProductos};let indice=index" class="shadow-sm">
 							<td>{{venta.comprobante.descripcion}}</td>
-							<td>{{venta.numComprobante}}</td>
+							<td>{{venta.numComprobante%10000000}}</td>
 							<td>{{venta.fecha | date:'dd-MM-yyyy'}}</td>
 							<td>{{venta.hora}}</td>
 							<td>{{venta.cliente.nombre}}</td>
 							<td>{{venta.monto}}</td>
 							<td class="text-center"><a class="btn btn-primary btn-sm" (click)="mostrarDetalle(venta)"
-									title="Mostrar detalle venta"><i class="far fa-eye text-white" aria-hidden="true"></i></a>
+									title="Mostrar detalle venta"><i class="far fa-eye fa-sm text-white"
+										aria-hidden="true"></i></a>
 								<a class="btn btn-info btn-sm" (click)="editarVenta(venta)" title="Editar venta">
-									<i class="far fa-edit text-white"></i></a>
-								<a class="btn btn-warning btn-sm" title="Anular venta"><i class="fas fa-backspace text-white"></i> </a>
+									<i class="far fa-edit fa-sm text-white"></i></a>
+								<a class="btn btn-warning btn-sm" (click)="anularVenta(venta)" title="Anular venta">
+									<i class="fas fa-times-circle fa-sm text-white"></i> </a>
 							</td>
 					</tbody>
-
 				</table>
+				<pagination-controls (pageChange)="page = $event"></pagination-controls>
 			</div>
 		</div>
 	</div>

@@ -3,7 +3,7 @@ import { DetalleVenta } from '../modelo/DetalleVenta';
 import { VentaService } from '../venta.service';
 import { ProductoService } from 'src/app/Producto/producto.service';
 import { Producto } from 'src/app/Producto/Modelo/producto/Producto';
-import { Router } from '@angular/router';
+import { Venta } from '../modelo/Venta';
 
 @Component({
   selector: 'app-detalle-venta',
@@ -12,9 +12,8 @@ import { Router } from '@angular/router';
 })
 export class DetalleVentaComponent implements OnInit {
 
-
   @Input() detallesH: DetalleVenta[] = [];
-  @Input() numComprobante: number
+  @Input() ventaH: Venta = new Venta();
   @Input() total: any = 0
   @Input() subtotal: any = 0
   subtotalAuxiliar: number = 0
@@ -22,7 +21,7 @@ export class DetalleVentaComponent implements OnInit {
 
   @Output() pasarDetalleH = new EventEmitter<any[]>();
   @Output() pasarMonto = new EventEmitter<number>();
-  @Output()pasarCodigo=new EventEmitter<number>();
+  @Output() pasarCodigo = new EventEmitter<number>();
 
   productos: Producto[]
   detalleP: DetalleVenta = new DetalleVenta();
@@ -37,22 +36,23 @@ export class DetalleVentaComponent implements OnInit {
   }
 
   editarDetalle(detalle: DetalleVenta, i) {
-    this.servicio.getDetalleVentaId(detalle.producto.codProducto, this.numComprobante).subscribe(data => this.detalleP = data);
+    this.servicio.getDetalleVentaId(detalle.producto.codProducto, this.ventaH.numComprobante).subscribe(data => this.detalleP = data);
     this.subtotalAuxiliar = detalle.cantidad * detalle.precio
     this.total = (this.total - this.subtotalAuxiliar).toFixed(2)
     this.subtotal = (this.total / 1.18).toFixed(2)
     this.igv = (this.total - this.subtotal).toFixed(2)
     this.detallesH.splice(i, 1);
+  
   }
 
   agregarDetalle() {
-    this.detalleP.id = { "codProducto": this.detalleP.producto.codProducto, "numComprobante": this.numComprobante }
-
+    this.detalleP.id = { "codProducto": this.detalleP.producto.codProducto, "numComprobante": this.ventaH.numComprobante }
+    this.detalleP.venta = this.ventaH
     this.subtotalAuxiliar = this.detalleP.cantidad * this.detalleP.precio
     this.total = (this.subtotalAuxiliar - (-this.total)).toFixed(2)
     this.subtotal = (this.total / 1.18).toFixed(2)
     this.igv = (this.total - this.subtotal).toFixed(2)
-
+    console.log(this.detalleP)
     this.detallesH.push(this.detalleP)
 
     //enviamos los valores al componente padre (agregarVentaComponent)
@@ -71,7 +71,7 @@ export class DetalleVentaComponent implements OnInit {
 
   eliminarDetalle(detalle: DetalleVenta, i) {
     this.detallesH.splice(i, 1);
-  
+
     this.subtotalAuxiliar = detalle.cantidad * detalle.precio
     this.total = (this.total - this.subtotalAuxiliar).toFixed(2)
     this.subtotal = (this.total / 1.18).toFixed(2)
@@ -79,13 +79,13 @@ export class DetalleVentaComponent implements OnInit {
 
     this.pasarCodigo.emit(detalle.producto.codProducto);
 
-    
-   /*  this.servicio.deleteDetalleVenta(detalle.producto.codProducto, this.numComprobante)
-    .subscribe(data => {
-      console.log(data)}); */
-    }
 
+    /*  this.servicio.deleteDetalleVenta(detalle.producto.codProducto, this.numComprobante)
+     .subscribe(data => {
+       console.log(data)}); */
   }
+
+}
 
 
 
