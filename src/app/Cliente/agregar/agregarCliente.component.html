@@ -26,7 +26,13 @@
                     <input formControlName="nroDocumento" type="text" class="form-control">
                     <div class="alert-danger" *ngIf="nroDocumento.invalid && (nroDocumento.dirty || nroDocumento.touched)">
                         <div class="container-error-message" *ngIf="nroDocumento.errors.required">
-                            Ingrese un telefono
+                            Ingrese el numero del documento
+                        </div>
+                        <div class="container-error-message" *ngIf="nroDocumento.errors.minlength">
+                            Debe ingresar 8 digitos si es DNI
+                        </div>
+                        <div class="container-error-message" *ngIf="nroDocumento.errors.maxlength">
+                            Debe ingresar 11 digitos si es RUC
                         </div>
                     </div>
                     <label for="">Telefono</label>
@@ -37,10 +43,10 @@
                         </div>
                     </div>  
                     <label for="">Correo</label>
-                    <input formControlName="correo" type="text" class="form-control">
+                    <input formControlName="correo" type="email" class="form-control">
                     <div class="alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
-                        <div class="container-error-message" *ngIf="correo.errors.required">
-                            Ingrese un telefono
+                        <div class="container-error-message" *ngIf="correo.errors.pattern">
+                            Ingrese formato de email ejemplo ejemplo@abc.com
                         </div>
                     </div>                
                 </div>

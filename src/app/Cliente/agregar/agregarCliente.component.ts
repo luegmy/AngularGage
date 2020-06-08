@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Documento } from 'src/app/Cliente/Modelo/cliente/Documento';
@@ -13,6 +13,7 @@ export class AgregarClienteComponent implements OnInit {
 
   documentos: Documento[];
   registroForm: FormGroup;
+  emailPatron:any=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   constructor(private router: Router,private servicio: ClienteService,private builder: FormBuilder) { 
     
@@ -20,9 +21,9 @@ export class AgregarClienteComponent implements OnInit {
         nombre: ['', [Validators.required]],
         direccion: ['', [Validators.required]],
         documento: ['', [Validators.required]],
-        nroDocumento: ['', [Validators.required]],
+        nroDocumento: ['', [Validators.required,Validators.minLength(8),Validators.maxLength(11)]],
         telefono: [''],
-        correo: ['', [Validators.email]]
+        correo: ['', [Validators.pattern(this.emailPatron)]]
       })
     }
 
